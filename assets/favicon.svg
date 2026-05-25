@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="CaravanOz - Viaje por Australia">
+  <defs>
+    <clipPath id="cvzScene"><circle cx="100" cy="100" r="78"/></clipPath>
+    <linearGradient id="cvzSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4A85F"/>
+      <stop offset="0.5" stop-color="#EC9258"/>
+      <stop offset="1" stop-color="#E07E4C"/>
+    </linearGradient>
+    <linearGradient id="cvzRock" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C75D3A"/>
+      <stop offset="1" stop-color="#A8472A"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="#285863"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#FBF6EE" stroke-width="7" stroke-dasharray="5.5 4.5" stroke-linecap="round"/>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#1f454e" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="100" cy="100" r="84" fill="none" stroke="#1f454e" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="100" cy="100" r="78" fill="url(#cvzSky)"/>
+  <g clip-path="url(#cvzScene)">
+    <ellipse cx="56" cy="52" rx="15" ry="5.5" fill="#FBF1E2" opacity="0.75"/>
+    <ellipse cx="70" cy="48" rx="10" ry="4" fill="#FBF1E2" opacity="0.6"/>
+    <ellipse cx="142" cy="46" rx="18" ry="6" fill="#FBF1E2" opacity="0.7"/>
+    <path d="M22 112 L22 102 Q24 90 44 86 Q72 79 102 82 Q142 85 178 98 L178 112 Z" fill="url(#cvzRock)"/>
+    <path d="M22 102 Q24 90 44 86 Q72 79 102 82 Q142 85 178 98 L178 92 Q140 80 102 77 Q70 75 44 81 Q26 85 22 96 Z" fill="#D2774A" opacity="0.55"/>
+    <g stroke="#9a3f24" stroke-width="1.2" opacity="0.5">
+      <line x1="60" y1="84" x2="62" y2="100"/>
+      <line x1="90" y1="82" x2="91" y2="100"/>
+      <line x1="120" y1="84" x2="122" y2="100"/>
+      <line x1="148" y1="89" x2="150" y2="102"/>
+    </g>
+    <rect x="22" y="112" width="156" height="9" fill="#7FB0AE"/>
+    <rect x="22" y="112" width="156" height="3" fill="#9ec7c4" opacity="0.7"/>
+    <rect x="22" y="121" width="156" height="60" fill="#BE6E3C"/>
+    <ellipse cx="100" cy="121" rx="78" ry="6" fill="#Cd8049" opacity="0.6"/>
+    <g fill="#7d4a26">
+      <path d="M40 128 q3 -7 6 0 q3 -6 5 0 z"/>
+      <path d="M160 130 q3 -7 6 0 q3 -6 5 0 z"/>
+    </g>
+    <g transform="translate(66,85)">
+      <rect x="-9" y="29" width="16" height="4" rx="2" fill="#285863"/>
+      <rect x="0" y="3" width="64" height="31" rx="9" fill="#4F9AA0"/>
+      <rect x="0" y="3" width="64" height="9" rx="9" fill="#5FB0B4"/>
+      <rect x="0" y="17" width="64" height="6" fill="#E68A4C"/>
+      <rect x="6" y="8" width="14" height="9" rx="2" fill="#D2ECEA"/>
+      <rect x="23" y="8" width="11" height="9" rx="2" fill="#D2ECEA"/>
+      <rect x="40" y="9" width="13" height="22" rx="2.5" fill="#34727A"/>
+      <circle cx="46" cy="20" r="1.4" fill="#D2ECEA"/>
+      <circle cx="16" cy="36" r="6.5" fill="#23505a"/>
+      <circle cx="16" cy="36" r="2.6" fill="#FBF1E2"/>
+    </g>
+    <g transform="translate(138,116)">
+      <path d="M24 20 Q16 19 12 14" fill="none" stroke="#A8472A" stroke-width="3.4" stroke-linecap="round"/>
+      <ellipse cx="12" cy="13" rx="5" ry="6" fill="#A8472A"/>
+      <path d="M8 18 L7 21 L14 21 L13 17 Z" fill="#A8472A"/>
+      <path d="M10.5 8 Q7 6 6 3 Q5 0.5 7 0 Q9 0.3 9.5 3 L11.5 8.5 Z" fill="#A8472A"/>
+      <circle cx="6" cy="2" r="2.4" fill="#A8472A"/>
+      <path d="M5 0.2 L4.4 -3.4 L6.1 -1 Z" fill="#A8472A"/>
+      <path d="M6.5 -0.4 L6.7 -3.6 L8 -0.8 Z" fill="#A8472A"/>
+      <path d="M9.5 9 Q6.8 9.6 6.2 12.2" fill="none" stroke="#A8472A" stroke-width="1.7" stroke-linecap="round"/>
+    </g>
+    <g>
+      <path d="M28 64 Q40 56 56 56" fill="none" stroke="#4f6e3e" stroke-width="1.6"/>
+      <ellipse cx="36" cy="58" rx="5.5" ry="2.4" fill="#6fa05b" transform="rotate(-32 36 58)"/>
+      <ellipse cx="45" cy="56" rx="5.5" ry="2.4" fill="#7fae6a" transform="rotate(-20 45 56)"/>
+      <ellipse cx="54" cy="56" rx="5" ry="2.2" fill="#6fa05b" transform="rotate(-8 54 56)"/>
+      <ellipse cx="40" cy="62" rx="4.5" ry="2" fill="#5f9050" transform="rotate(-40 40 62)"/>
+    </g>
+  </g>
+  <path d="M38 150 Q100 168 162 150 L162 170 Q100 188 38 170 Z" fill="#285863"/>
+  <path d="M38 150 Q100 168 162 150 L162 154 Q100 172 38 154 Z" fill="#1f454e"/>
+  <text x="100" y="163" text-anchor="middle" font-family="'Arial Black', Impact, sans-serif" font-size="17" font-weight="900" fill="#FBF6EE" letter-spacing="0.3">CARAVANOZ</text>
+  <text x="100" y="173.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="6.4" font-weight="bold" fill="#E7B373" letter-spacing="2.4">VIAJE POR AUSTRALIA</text>
+  <path d="M100 3 C91.7 3 85 9.7 85 18 C85 28.5 100 41 100 41 C100 41 115 28.5 115 18 C115 9.7 108.3 3 100 3 Z" fill="#C75D3A" stroke="#FBF6EE" stroke-width="2.2"/>
+  <circle cx="100" cy="18" r="5" fill="#FBF6EE"/>
+</svg>

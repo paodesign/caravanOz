@@ -1,0 +1,9 @@
+# Configuración para desplegar en Netlify.
+# El sitio es estático, así que no hay paso de build: solo se publica la carpeta.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
