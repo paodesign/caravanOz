@@ -1434,6 +1434,23 @@ a.gcard {
   cursor: pointer;
 }
 
+/* Badge glassmorphism for upcoming episodes */
+.badge-pronto {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.12); /* brand amber */
+  color: #fbbf24; /* brand gold */
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  margin-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 /* ---------- GUIDES SECTION ORGANISM ---------- */
 .guides {
   background: var(--cream-2);

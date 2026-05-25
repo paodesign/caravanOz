@@ -237,11 +237,12 @@
       var isSong = ep.num === '♫' || ep.audioUrl;
       var songClass = isSong ? ' song-track' : '';
       var audioAttr = ep.audioUrl ? ' data-audio="' + ep.audioUrl + '"' : '';
+      var prontoBadge = !isSong ? ' <span class="badge-pronto">Próximamente</span>' : '';
       return (
         '<article class="pod-ep' + songClass + '" data-num="' + ep.num + '" data-duration="' + ep.duration + '"' + audioAttr + '>' +
           '<div class="num">' + ep.num + '</div>' +
           '<div class="ep-info">' +
-            '<h4>' + ep.title + '</h4>' +
+            '<h4>' + ep.title + prontoBadge + '</h4>' +
             '<span>' + ep.duration + ' · ' + ep.date + '</span>' +
           '</div>' +
           '<span class="ep-play" aria-hidden="true">' +
