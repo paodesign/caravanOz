@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.caravanoz.com/sitemap.xml
+Sitemap: https://paodesign.github.io/caravanOz/sitemap.xml

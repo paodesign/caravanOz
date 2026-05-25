@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
   <url>
-    <loc>https://www.caravanoz.com/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <loc>https://paodesign.github.io/caravanOz/</loc>
+    <lastmod>2026-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  
+  <!-- Guía: Costos de Vida -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/costos-vida-ruta-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Guía: Work and Holiday Visa -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/work-and-holiday-visa-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Guía: Mejores Campings Gratuitos -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/mejores-campings-gratuitos-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Guía: Cómo Equipar Caravana -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/como-equipar-caravana-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Guía: Trabajar Online en la Ruta -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/trabajar-online-ruta-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Guía: Rutas Costa Este -->
+  <url>
+    <loc>https://paodesign.github.io/caravanOz/guias/rutas-costa-este-australia.html</loc>
+    <lastmod>2026-05-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>
