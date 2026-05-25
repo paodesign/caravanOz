@@ -431,6 +431,11 @@
     var activeAudioUrl = null;
     var isRealPlayback = false;
 
+    // Simulated Progress State
+    var simulatedInterval = null;
+    var simulatedCurrentTime = 0;
+    var simulatedDuration = 1800;
+
     // Elementos del reproductor
     var playerTitle = playerContainer.querySelector('.pp-info h3');
     var playerMeta = playerContainer.querySelector('.pp-info span');
@@ -445,6 +450,23 @@
     var currentTrackTitle = 'Cielo de Sal (Tema de Ruta)';
     var currentTrackDuration = '3:24';
     var currentTrackAudioUrl = 'assets/Cielo_de_Sal.mp3';
+
+    function parseDuration(durationStr) {
+      if (!durationStr) return 1800;
+      durationStr = durationStr.toLowerCase().trim();
+      if (durationStr.indexOf('min') !== -1) {
+        var minutes = parseInt(durationStr.replace('min', '').trim(), 10);
+        return isNaN(minutes) ? 1800 : minutes * 60;
+      }
+      if (durationStr.indexOf(':') !== -1) {
+        var parts = durationStr.split(':');
+        var m = parseInt(parts[0], 10);
+        var s = parseInt(parts[1], 10);
+        return (isNaN(m) ? 0 : m * 60) + (isNaN(s) ? 0 : s);
+      }
+      var num = parseInt(durationStr, 10);
+      return isNaN(num) ? 1800 : num * 60;
+    }
 
     function initAudioTrack(url) {
       if (realAudio) {
@@ -469,7 +491,7 @@
     }
 
     function onTimeUpdate() {
-      if (!realAudio || isNaN(realAudio.duration)) return;
+      if (!isRealPlayback || !realAudio || isNaN(realAudio.duration)) return;
       var percent = (realAudio.currentTime / realAudio.duration) * 100;
       if (trackActive) {
         trackActive.style.width = percent + '%';
@@ -481,12 +503,13 @@
 
     function onLoadedMetadata() {
       if (!realAudio) return;
-      if (durationLabel) {
+      if (isRealPlayback && durationLabel) {
         durationLabel.textContent = formatTime(realAudio.duration);
       }
     }
 
     function onAudioEnded() {
+      stopSimulatedProgress();
       podPlay.classList.remove('playing');
       playerContainer.classList.remove('playing');
       podPlay.innerHTML = PLAY_ICON;
@@ -500,6 +523,34 @@
       if (subInfo && subInfo.dataset.originalText) {
         subInfo.textContent = subInfo.dataset.originalText;
         delete subInfo.dataset.originalText;
+      }
+    }
+
+    // Cronómetro simulador de timeline para mockups
+    function startSimulatedProgress() {
+      clearInterval(simulatedInterval);
+      simulatedInterval = setInterval(function () {
+        if (simulatedCurrentTime < simulatedDuration) {
+          simulatedCurrentTime++;
+          updateSimulatedTimeline();
+        } else {
+          stopSimulatedProgress();
+          onAudioEnded();
+        }
+      }, 1000);
+    }
+
+    function stopSimulatedProgress() {
+      clearInterval(simulatedInterval);
+    }
+
+    function updateSimulatedTimeline() {
+      var percent = (simulatedCurrentTime / simulatedDuration) * 100;
+      if (trackActive) {
+        trackActive.style.width = percent + '%';
+      }
+      if (currentTimeLabel) {
+        currentTimeLabel.textContent = formatTime(simulatedCurrentTime);
       }
     }
 
@@ -518,9 +569,7 @@
       if (isPlaying) {
         podPlay.innerHTML = PAUSE_ICON;
         
-        // Manejo de reproducción real o simulada
         if (isRealPlayback) {
-          // Desactivar cualquier animación CSS en la barra de progreso
           if (trackActive) {
             trackActive.style.animation = 'none';
           }
@@ -530,9 +579,20 @@
             });
           }
         } else {
-          // Playback simulado: usar la animación CSS clásica
-          if (trackActive) {
-            trackActive.style.animation = 'progress-width 30s linear infinite';
+          // Playback simulado con ambientación sutil
+          startSimulatedProgress();
+          if (realAudio) {
+            realAudio.play().catch(function(e) {
+              console.warn("Fallo autoplay de audio de fondo:", e);
+            });
+          }
+          // Disparar anuncio por voz nativa
+          if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var utterance = new SpeechSynthesisUtterance("La próxima semana estaré disponible");
+            utterance.lang = "es-ES";
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
           }
         }
 
@@ -549,11 +609,9 @@
             realAudio.pause();
           }
         } else {
-          if (trackActive) {
-            // Congela la animación simulada en su ancho actual al pausar
-            var computedWidth = window.getComputedStyle(trackActive).width;
-            trackActive.style.width = computedWidth;
-            trackActive.style.animation = 'none';
+          stopSimulatedProgress();
+          if (realAudio) {
+            realAudio.pause();
           }
         }
 
@@ -568,18 +626,30 @@
     /* Soporte interactivo de "Seeking" (Clic en la barra de progreso) */
     if (ppTrack) {
       ppTrack.addEventListener('click', function (e) {
-        if (!isRealPlayback || !realAudio || isNaN(realAudio.duration)) return;
         var rect = ppTrack.getBoundingClientRect();
         var clickX = e.clientX - rect.left;
         var percent = clickX / rect.width;
         
-        // Acotar rango entre 0 y 1
         percent = Math.max(0, Math.min(1, percent));
         
-        realAudio.currentTime = percent * realAudio.duration;
-        trackActive.style.width = (percent * 100) + '%';
-        if (currentTimeLabel) {
-          currentTimeLabel.textContent = formatTime(realAudio.currentTime);
+        if (isRealPlayback) {
+          if (!realAudio || isNaN(realAudio.duration)) return;
+          realAudio.currentTime = percent * realAudio.duration;
+          trackActive.style.width = (percent * 100) + '%';
+          if (currentTimeLabel) {
+            currentTimeLabel.textContent = formatTime(realAudio.currentTime);
+          }
+        } else {
+          // Seeking interactivo simulado
+          simulatedCurrentTime = Math.floor(percent * simulatedDuration);
+          trackActive.style.width = (percent * 100) + '%';
+          if (currentTimeLabel) {
+            currentTimeLabel.textContent = formatTime(simulatedCurrentTime);
+          }
+          // Sincronizar audio de fondo para inmersión
+          if (realAudio && !isNaN(realAudio.duration)) {
+            realAudio.currentTime = percent * realAudio.duration;
+          }
         }
       });
     }
@@ -592,6 +662,9 @@
       var title = epCard.querySelector('h4').textContent;
       var duration = epCard.getAttribute('data-duration') || '45 min';
       var audioUrl = epCard.getAttribute('data-audio');
+
+      // Detener cualquier simulación activa anterior
+      stopSimulatedProgress();
 
       // Actualizar variables de estado
       currentTrackNum = num;
@@ -618,20 +691,32 @@
         if (ppHint) {
           ppHint.textContent = 'Reproductor interactivo real · Sincronizado con Cielo de Sal.';
         }
+        if (currentTimeLabel) currentTimeLabel.textContent = '0:00';
+        if (durationLabel) durationLabel.textContent = '3:24';
+        if (trackActive) {
+          trackActive.style.animation = 'none';
+          trackActive.style.width = '0%';
+        }
       } else {
         isRealPlayback = false;
+        // Cargar audio de fondo (Cielo de Sal a bajo volumen)
+        initAudioTrack('assets/Cielo_de_Sal.mp3');
         if (realAudio) {
-          realAudio.pause();
+          realAudio.volume = 0.12;
+          realAudio.loop = true;
         }
+        
+        simulatedDuration = parseDuration(duration);
+        simulatedCurrentTime = 0;
+
         if (ppHint) {
-          ppHint.textContent = 'Reproductor de demostración · conectá tu show de Spotify para reproducir los episodios reales.';
+          ppHint.textContent = 'Teaser interactivo · Locución + banda sonora de ruta activas.';
         }
-        // Configurar valores predeterminados para la simulación
-        if (currentTimeLabel) currentTimeLabel.textContent = '18:24';
-        if (durationLabel) durationLabel.textContent = duration;
+        if (currentTimeLabel) currentTimeLabel.textContent = '0:00';
+        if (durationLabel) durationLabel.textContent = formatTime(simulatedDuration);
         if (trackActive) {
-          trackActive.style.width = '38%';
           trackActive.style.animation = 'none';
+          trackActive.style.width = '0%';
         }
       }
 
@@ -651,23 +736,25 @@
       }
 
       if (isRealPlayback) {
-        if (trackActive) {
-          trackActive.style.animation = 'none';
-          trackActive.style.width = '0%';
-        }
-        if (currentTimeLabel) {
-          currentTimeLabel.textContent = '0:00';
-        }
         if (realAudio) {
           realAudio.play().catch(function(e) {
             console.warn("Fallo autoplay de audio:", e);
           });
         }
       } else {
-        if (trackActive) {
-          trackActive.style.animation = 'none';
-          trackActive.offsetHeight; // trigger reflow
-          trackActive.style.animation = 'progress-width 30s linear infinite';
+        startSimulatedProgress();
+        if (realAudio) {
+          realAudio.play().catch(function(e) {
+            console.warn("Fallo autoplay de audio de fondo:", e);
+          });
+        }
+        // Emitir el anuncio por voz
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          var utterance = new SpeechSynthesisUtterance("La próxima semana estaré disponible");
+          utterance.lang = "es-ES";
+          utterance.rate = 0.9;
+          window.speechSynthesis.speak(utterance);
         }
       }
     }
