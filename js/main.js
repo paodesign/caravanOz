@@ -54,6 +54,14 @@
     ],
     "podcastEpisodes": [
       {
+        "num": "♫",
+        "title": "Cielo de Sal (Tema de Ruta)",
+        "duration": "3:24",
+        "date": "Banda Sonora",
+        "audioUrl": "assets/Cielo_de_Sal.mp3",
+        "spotifyUrl": "#"
+      },
+      {
         "num": "04",
         "title": "Cómo financiamos la vida en la ruta",
         "duration": "48 min",
@@ -226,8 +234,11 @@
     var podList = document.getElementById('podList');
     if (!podList) return;
     podList.innerHTML = episodes.map(function (ep) {
+      var isSong = ep.num === '♫' || ep.audioUrl;
+      var songClass = isSong ? ' song-track' : '';
+      var audioAttr = ep.audioUrl ? ' data-audio="' + ep.audioUrl + '"' : '';
       return (
-        '<article class="pod-ep" data-num="' + ep.num + '" data-duration="' + ep.duration + '">' +
+        '<article class="pod-ep' + songClass + '" data-num="' + ep.num + '" data-duration="' + ep.duration + '"' + audioAttr + '>' +
           '<div class="num">' + ep.num + '</div>' +
           '<div class="ep-info">' +
             '<h4>' + ep.title + '</h4>' +
@@ -415,6 +426,87 @@
     var PLAY_ICON = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>';
     var PAUSE_ICON = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 
+    // Audio Engine
+    var realAudio = null;
+    var activeAudioUrl = null;
+    var isRealPlayback = false;
+
+    // Elementos del reproductor
+    var playerTitle = playerContainer.querySelector('.pp-info h3');
+    var playerMeta = playerContainer.querySelector('.pp-info span');
+    var trackActive = playerContainer.querySelector('.pp-track i');
+    var ppTrack = document.getElementById('ppTrack');
+    var currentTimeLabel = document.getElementById('ppCurrentTime');
+    var durationLabel = document.getElementById('ppDuration');
+    var ppHint = document.getElementById('ppHint');
+
+    // Inicializar el primer track por defecto ("Cielo de Sal")
+    var currentTrackNum = '♫';
+    var currentTrackTitle = 'Cielo de Sal (Tema de Ruta)';
+    var currentTrackDuration = '3:24';
+    var currentTrackAudioUrl = 'assets/Cielo_de_Sal.mp3';
+
+    function initAudioTrack(url) {
+      if (realAudio) {
+        realAudio.pause();
+        realAudio.removeEventListener('timeupdate', onTimeUpdate);
+        realAudio.removeEventListener('loadedmetadata', onLoadedMetadata);
+        realAudio.removeEventListener('ended', onAudioEnded);
+      }
+      realAudio = new Audio(url);
+      activeAudioUrl = url;
+      
+      realAudio.addEventListener('timeupdate', onTimeUpdate);
+      realAudio.addEventListener('loadedmetadata', onLoadedMetadata);
+      realAudio.addEventListener('ended', onAudioEnded);
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '0:00';
+      var m = Math.floor(seconds / 60);
+      var s = Math.floor(seconds % 60);
+      return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    function onTimeUpdate() {
+      if (!realAudio || isNaN(realAudio.duration)) return;
+      var percent = (realAudio.currentTime / realAudio.duration) * 100;
+      if (trackActive) {
+        trackActive.style.width = percent + '%';
+      }
+      if (currentTimeLabel) {
+        currentTimeLabel.textContent = formatTime(realAudio.currentTime);
+      }
+    }
+
+    function onLoadedMetadata() {
+      if (!realAudio) return;
+      if (durationLabel) {
+        durationLabel.textContent = formatTime(realAudio.duration);
+      }
+    }
+
+    function onAudioEnded() {
+      podPlay.classList.remove('playing');
+      playerContainer.classList.remove('playing');
+      podPlay.innerHTML = PLAY_ICON;
+      if (trackActive) {
+        trackActive.style.width = '0%';
+      }
+      if (currentTimeLabel) {
+        currentTimeLabel.textContent = '0:00';
+      }
+      var subInfo = playerContainer.querySelector('.pp-info span');
+      if (subInfo && subInfo.dataset.originalText) {
+        subInfo.textContent = subInfo.dataset.originalText;
+        delete subInfo.dataset.originalText;
+      }
+    }
+
+    // Asegurarse de que el track por defecto esté cargado
+    initAudioTrack(currentTrackAudioUrl);
+    isRealPlayback = true;
+
     /* Acción del botón de reproducción principal */
     podPlay.addEventListener('click', function () {
       var isPlaying = podPlay.classList.toggle('playing');
@@ -425,6 +517,25 @@
       
       if (isPlaying) {
         podPlay.innerHTML = PAUSE_ICON;
+        
+        // Manejo de reproducción real o simulada
+        if (isRealPlayback) {
+          // Desactivar cualquier animación CSS en la barra de progreso
+          if (trackActive) {
+            trackActive.style.animation = 'none';
+          }
+          if (realAudio) {
+            realAudio.play().catch(function(e) {
+              console.warn("Fallo autoplay de audio:", e);
+            });
+          }
+        } else {
+          // Playback simulado: usar la animación CSS clásica
+          if (trackActive) {
+            trackActive.style.animation = 'progress-width 30s linear infinite';
+          }
+        }
+
         var subInfo = playerContainer.querySelector('.pp-info span');
         if (subInfo && !subInfo.dataset.originalText) {
           subInfo.dataset.originalText = subInfo.textContent;
@@ -432,6 +543,20 @@
         }
       } else {
         podPlay.innerHTML = PLAY_ICON;
+        
+        if (isRealPlayback) {
+          if (realAudio) {
+            realAudio.pause();
+          }
+        } else {
+          if (trackActive) {
+            // Congela la animación simulada en su ancho actual al pausar
+            var computedWidth = window.getComputedStyle(trackActive).width;
+            trackActive.style.width = computedWidth;
+            trackActive.style.animation = 'none';
+          }
+        }
+
         var subInfoText = playerContainer.querySelector('.pp-info span');
         if (subInfoText && subInfoText.dataset.originalText) {
           subInfoText.textContent = subInfoText.dataset.originalText;
@@ -440,46 +565,155 @@
       }
     });
 
-    /* Carga dinámica de episodios al hacer clic en la lista */
+    /* Soporte interactivo de "Seeking" (Clic en la barra de progreso) */
+    if (ppTrack) {
+      ppTrack.addEventListener('click', function (e) {
+        if (!isRealPlayback || !realAudio || isNaN(realAudio.duration)) return;
+        var rect = ppTrack.getBoundingClientRect();
+        var clickX = e.clientX - rect.left;
+        var percent = clickX / rect.width;
+        
+        // Acotar rango entre 0 y 1
+        percent = Math.max(0, Math.min(1, percent));
+        
+        realAudio.currentTime = percent * realAudio.duration;
+        trackActive.style.width = (percent * 100) + '%';
+        if (currentTimeLabel) {
+          currentTimeLabel.textContent = formatTime(realAudio.currentTime);
+        }
+      });
+    }
+
+    /* Carga dinámica de episodios al hacer clic en la lista o botones Siguiente/Anterior */
+    function loadTrack(epCard) {
+      if (!epCard) return;
+
+      var num = epCard.getAttribute('data-num') || '01';
+      var title = epCard.querySelector('h4').textContent;
+      var duration = epCard.getAttribute('data-duration') || '45 min';
+      var audioUrl = epCard.getAttribute('data-audio');
+
+      // Actualizar variables de estado
+      currentTrackNum = num;
+      currentTrackTitle = title;
+      currentTrackDuration = duration;
+      currentTrackAudioUrl = audioUrl;
+
+      if (playerTitle && playerMeta) {
+        // Actualiza panel de reproducción
+        if (num === '♫') {
+          playerTitle.textContent = title;
+          playerMeta.textContent = 'CaravanOz Podcast · Banda Sonora';
+        } else {
+          playerTitle.textContent = 'Ep. ' + num + ' — ' + title;
+          playerMeta.textContent = 'CaravanOz Podcast · ' + duration;
+        }
+        delete playerMeta.dataset.originalText;
+      }
+
+      // Configurar modo de reproducción
+      if (audioUrl) {
+        isRealPlayback = true;
+        initAudioTrack(audioUrl);
+        if (ppHint) {
+          ppHint.textContent = 'Reproductor interactivo real · Sincronizado con Cielo de Sal.';
+        }
+      } else {
+        isRealPlayback = false;
+        if (realAudio) {
+          realAudio.pause();
+        }
+        if (ppHint) {
+          ppHint.textContent = 'Reproductor de demostración · conectá tu show de Spotify para reproducir los episodios reales.';
+        }
+        // Configurar valores predeterminados para la simulación
+        if (currentTimeLabel) currentTimeLabel.textContent = '18:24';
+        if (durationLabel) durationLabel.textContent = duration;
+        if (trackActive) {
+          trackActive.style.width = '38%';
+          trackActive.style.animation = 'none';
+        }
+      }
+
+      // Forza estado de reproducción ("playing")
+      podPlay.classList.add('playing');
+      playerContainer.classList.add('playing');
+      podPlay.innerHTML = PAUSE_ICON;
+
+      var subInfo = playerContainer.querySelector('.pp-info span');
+      if (subInfo) {
+        if (audioUrl) {
+          subInfo.dataset.originalText = 'CaravanOz Podcast · Banda Sonora';
+        } else {
+          subInfo.dataset.originalText = 'CaravanOz Podcast · ' + duration;
+        }
+        subInfo.innerHTML = '<span style="color:var(--spotify); font-weight:600;">▶ Reproduciendo ahora...</span>';
+      }
+
+      if (isRealPlayback) {
+        if (trackActive) {
+          trackActive.style.animation = 'none';
+          trackActive.style.width = '0%';
+        }
+        if (currentTimeLabel) {
+          currentTimeLabel.textContent = '0:00';
+        }
+        if (realAudio) {
+          realAudio.play().catch(function(e) {
+            console.warn("Fallo autoplay de audio:", e);
+          });
+        }
+      } else {
+        if (trackActive) {
+          trackActive.style.animation = 'none';
+          trackActive.offsetHeight; // trigger reflow
+          trackActive.style.animation = 'progress-width 30s linear infinite';
+        }
+      }
+    }
+
     var podList = document.getElementById('podList');
     if (podList) {
       podList.addEventListener('click', function (e) {
         var epCard = e.target.closest('.pod-ep');
-        if (!epCard) return;
-
-        var num = epCard.getAttribute('data-num') || '01';
-        var title = epCard.querySelector('h4').textContent;
-        var duration = epCard.getAttribute('data-duration') || '45 min';
-
-        var playerTitle = playerContainer.querySelector('.pp-info h3');
-        var playerMeta = playerContainer.querySelector('.pp-info span');
-
-        if (playerTitle && playerMeta) {
-          // Actualiza panel de reproducción
-          playerTitle.textContent = 'Ep. ' + num + ' — ' + title;
-          playerMeta.textContent = 'CaravanOz Podcast · ' + duration;
-
-          // Borrar meta anterior temporal
-          delete playerMeta.dataset.originalText;
+        if (epCard) {
+          loadTrack(epCard);
         }
+      });
+    }
 
-        // Forza estado de reproducción ("playing")
-        podPlay.classList.add('playing');
-        playerContainer.classList.add('playing');
-        podPlay.innerHTML = PAUSE_ICON;
+    // Botones de Siguiente y Anterior (Navegación secuencial de tracks)
+    var podPrev = document.getElementById('podPrev');
+    var podNext = document.getElementById('podNext');
 
-        var subInfo = playerContainer.querySelector('.pp-info span');
-        if (subInfo) {
-          subInfo.dataset.originalText = 'CaravanOz Podcast · ' + duration;
-          subInfo.innerHTML = '<span style="color:var(--spotify); font-weight:600;">▶ Reproduciendo ahora...</span>';
+    function getSiblingTrack(dir) {
+      if (!podList) return null;
+      var cards = Array.from(podList.querySelectorAll('.pod-ep'));
+      var currentIndex = cards.findIndex(function(c) {
+        return c.getAttribute('data-num') === currentTrackNum;
+      });
+      if (currentIndex === -1) return null;
+      var targetIndex = currentIndex + dir;
+      if (targetIndex >= 0 && targetIndex < cards.length) {
+        return cards[targetIndex];
+      }
+      return null;
+    }
+
+    if (podPrev) {
+      podPrev.addEventListener('click', function() {
+        var targetCard = getSiblingTrack(-1);
+        if (targetCard) {
+          loadTrack(targetCard);
         }
+      });
+    }
 
-        // Reinicia la barra de progreso
-        var trackActive = playerContainer.querySelector('.pp-track i');
-        if (trackActive) {
-          trackActive.style.animation = 'none';
-          trackActive.offsetHeight; // trigger reflow
-          trackActive.style.animation = null;
+    if (podNext) {
+      podNext.addEventListener('click', function() {
+        var targetCard = getSiblingTrack(1);
+        if (targetCard) {
+          loadTrack(targetCard);
         }
       });
     }

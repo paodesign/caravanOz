@@ -1413,6 +1413,27 @@ a.gcard {
   margin-left: 2px;
 }
 
+/* Special Styling for Song/Soundtrack Track */
+.pod-ep.song-track {
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(29, 185, 84, 0.25);
+}
+
+.pod-ep.song-track:hover {
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.14) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border-color: rgba(29, 185, 84, 0.4);
+}
+
+.pod-ep.song-track .num {
+  background: rgba(29, 185, 84, 0.15);
+  color: var(--spotify);
+}
+
+/* Dynamic Interactive Seekable Track */
+.pp-track {
+  cursor: pointer;
+}
+
 /* ---------- GUIDES SECTION ORGANISM ---------- */
 .guides {
   background: var(--cream-2);

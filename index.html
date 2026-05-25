@@ -246,25 +246,35 @@
         <div class="pp-card">
           <div class="pp-art"><img src="assets/favicon-512.png" alt="Tapa del podcast CaravanOz" /></div>
           <div class="pp-info">
-            <h3>Ep. 04 — Cómo financiamos la vida en la ruta</h3>
-            <span>CaravanOz Podcast · 48 min</span>
+            <h3>Cielo de Sal — Tema de Ruta</h3>
+            <span>CaravanOz Podcast · Banda Sonora</span>
           </div>
         </div>
         <div class="pp-bar">
-          <div class="pp-track"><i></i></div>
-          <div class="pp-time"><span>18:24</span><span>48:00</span></div>
+          <div class="pp-track" id="ppTrack">
+            <i style="width: 0%;"></i>
+          </div>
+          <div class="pp-time"><span id="ppCurrentTime">0:00</span><span id="ppDuration">3:24</span></div>
         </div>
         <div class="pp-controls">
-          <button aria-label="Anterior"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+          <button aria-label="Anterior" id="podPrev"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
           <button class="pp-play" id="podPlay" aria-label="Reproducir"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></button>
-          <button aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zm-2.5 6L5 6v12z"/></svg></button>
+          <button aria-label="Siguiente" id="podNext"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zm-2.5 6L5 6v12z"/></svg></button>
         </div>
-        <p class="pp-hint">Reproductor de demostración · conectá tu show de Spotify para reproducir los episodios reales.</p>
+        <p class="pp-hint" id="ppHint">Reproductor interactivo real · Seleccioná Cielo de Sal para reproducir audio real.</p>
       </div>
 
       <!-- Lista de episodios -->
       <div class="pod-list reveal" id="podList">
-        <article class="pod-ep">
+        <article class="pod-ep song-track" data-num="♫" data-duration="3:24" data-audio="assets/Cielo_de_Sal.mp3">
+          <div class="num">♫</div>
+          <div class="ep-info">
+            <h4>Cielo de Sal (Tema de Ruta)</h4>
+            <span>3:24 · Banda Sonora</span>
+          </div>
+          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </article>
+        <article class="pod-ep" data-num="04" data-duration="48 min">
           <div class="num">04</div>
           <div class="ep-info">
             <h4>Cómo financiamos la vida en la ruta</h4>
@@ -272,7 +282,7 @@
           </div>
           <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </article>
-        <article class="pod-ep">
+        <article class="pod-ep" data-num="03" data-duration="39 min">
           <div class="num">03</div>
           <div class="ep-info">
             <h4>Los miedos antes de largar todo</h4>
@@ -280,7 +290,7 @@
           </div>
           <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </article>
-        <article class="pod-ep">
+        <article class="pod-ep" data-num="02" data-duration="44 min">
           <div class="num">02</div>
           <div class="ep-info">
             <h4>Trabajar online viajando: lo bueno y lo feo</h4>
@@ -288,7 +298,7 @@
           </div>
           <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </article>
-        <article class="pod-ep">
+        <article class="pod-ep" data-num="01" data-duration="52 min">
           <div class="num">01</div>
           <div class="ep-info">
             <h4>Por qué elegimos Australia para vivir en caravana</h4>

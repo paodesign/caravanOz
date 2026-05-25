@@ -47,6 +47,14 @@
   ],
   "podcastEpisodes": [
     {
+      "num": "♫",
+      "title": "Cielo de Sal (Tema de Ruta)",
+      "duration": "3:24",
+      "date": "Banda Sonora",
+      "audioUrl": "assets/Cielo_de_Sal.mp3",
+      "spotifyUrl": "#"
+    },
+    {
       "num": "04",
       "title": "Cómo financiamos la vida en la ruta",
       "duration": "48 min",
