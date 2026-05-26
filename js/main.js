@@ -62,10 +62,17 @@
         "spotifyUrl": "#"
       },
       {
-        "num": "04",
-        "title": "Cómo financiamos la vida en la ruta",
-        "duration": "48 min",
-        "date": "hace 1 week",
+        "num": "01",
+        "title": "Resetear la vida y el choque cultural de migrar a Australia",
+        "duration": "52 min",
+        "date": "hace 1 month",
+        "spotifyUrl": "https://open.spotify.com/episode/2NSMjXxEZEpoRgpgSFnaIJ?si=_z7M40MFTCWy8rAfg688_g"
+      },
+      {
+        "num": "02",
+        "title": "Trabajar online viajando: lo bueno y lo feo",
+        "duration": "44 min",
+        "date": "hace 1 month",
         "spotifyUrl": "https://open.spotify.com/"
       },
       {
@@ -76,17 +83,10 @@
         "spotifyUrl": "https://open.spotify.com/"
       },
       {
-        "num": "02",
-        "title": "Trabajar online viajando: lo bueno y lo feo",
-        "duration": "44 min",
-        "date": "hace 1 month",
-        "spotifyUrl": "https://open.spotify.com/"
-      },
-      {
-        "num": "01",
-        "title": "Por qué elegimos Australia para vivir en caravana",
-        "duration": "52 min",
-        "date": "hace 1 month",
+        "num": "04",
+        "title": "Cómo financiamos la vida en la ruta",
+        "duration": "48 min",
+        "date": "hace 1 week",
         "spotifyUrl": "https://open.spotify.com/"
       }
     ],
