@@ -818,10 +818,11 @@
 
     if (!modal || !form) return;
 
-    // Escuchar clicks en los botones de servicios para abrir el modal
-    document.querySelectorAll('.service-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var serviceType = btn.getAttribute('data-service');
+    // Escuchar clicks en toda la tarjeta del servicio para abrir el modal
+    document.querySelectorAll('.m-plan-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var btn = card.querySelector('.service-btn');
+        var serviceType = btn ? btn.getAttribute('data-service') : 'copilotos';
         if (select) {
           if (serviceType === 'despegue') select.value = 'despegue';
           else if (serviceType === 'copilotos') select.value = 'copilotos';
