@@ -403,7 +403,7 @@
             Simulación de presupuesto de vida real viviendo sobre ruedas.
           </li>
         </ul>
-        <a href="#newsletter" class="btn btn-ghost-light">Consultar Sesión</a>
+        <button class="btn btn-ghost-light service-btn" data-service="despegue">Consultar Sesión</button>
       </article>
 
       <!-- PLAN 2 (FEATURED) -->
@@ -432,7 +432,7 @@
             Asesoramiento en distribución familiar, autonomía solar y valor de reventa.
           </li>
         </ul>
-        <a href="#newsletter" class="btn btn-primary">Postularme al 1 a 1</a>
+        <button class="btn btn-primary service-btn" data-service="copilotos">Postularme al 1 a 1</button>
       </article>
 
       <!-- PLAN 3 -->
@@ -456,7 +456,7 @@
             2 videollamadas grupales al mes de preguntas y respuestas.
           </li>
         </ul>
-        <a href="#newsletter" class="btn btn-ghost-light">Sumarme al Fogón</a>
+        <button class="btn btn-ghost-light service-btn" data-service="fogon">Sumarme al Fogón</button>
       </article>
     </div>
   </div>
@@ -555,6 +555,45 @@
     </div>
   </div>
 </footer>
+
+<!-- Modal de Consulta de Servicios (Interactive Popup Form) -->
+<div id="serviceModal" class="modal-overlay" aria-hidden="true" role="dialog">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar modal">&times;</button>
+    <div class="modal-header">
+      <h3>Enviar Consulta</h3>
+      <p>Dejanos tus datos y nos pondremos en contacto por WhatsApp o email en menos de 24 horas para ayudarte.</p>
+    </div>
+    <form id="serviceForm" class="modal-form">
+      <div class="form-group">
+        <label for="mName">Nombre completo</label>
+        <input type="text" id="mName" placeholder="Ej. Sofía Fernández" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="mEmail">Correo electrónico</label>
+        <input type="email" id="mEmail" placeholder="Ej. sofia@ejemplo.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="mPhone">WhatsApp (con código de país)</label>
+        <input type="tel" id="mPhone" placeholder="Ej. +54 9 11 1234 5678" required>
+      </div>
+      <div class="form-group">
+        <label for="mService">Servicio de interés</label>
+        <select id="mService" required>
+          <option value="despegue">Despegue Seguro — Videollamada 90 min</option>
+          <option value="copilotos">Acompañamiento 1 a 1 — Copilotos de Ruta</option>
+          <option value="fogon">Comunidad del Fogón — Soporte Grupal</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mMessage">Tu consulta (contanos sobre tu viaje o caravana)</label>
+        <textarea id="mMessage" placeholder="¿Cuándo viajas? ¿Qué tipo de caravana estás buscando?" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-full">Enviar consulta ✦</button>
+      <p id="modalMsg" class="form-msg" role="status"></p>
+    </form>
+  </div>
+</div>
 
 <script src="js/main.js" defer></script>
 </body>

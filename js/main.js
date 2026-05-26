@@ -196,6 +196,7 @@
 
     setupCoreInteractions();
     setupPodcastPlayerInteractions();
+    setupServiceModalInteractions();
   }
 
   /* ---------- Hidratación Dinámica de Nodos HTML ---------- */
@@ -805,6 +806,87 @@
         }
       });
     }
+  }
+
+  /* ---------- Control del Modal de Consulta de Servicios ---------- */
+  function setupServiceModalInteractions() {
+    var modal = document.getElementById('serviceModal');
+    var modalClose = document.getElementById('modalClose');
+    var form = document.getElementById('serviceForm');
+    var select = document.getElementById('mService');
+    var modalMsg = document.getElementById('modalMsg');
+
+    if (!modal || !form) return;
+
+    // Escuchar clicks en los botones de servicios para abrir el modal
+    document.querySelectorAll('.service-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var serviceType = btn.getAttribute('data-service');
+        if (select) {
+          if (serviceType === 'despegue') select.value = 'despegue';
+          else if (serviceType === 'copilotos') select.value = 'copilotos';
+          else if (serviceType === 'fogon') select.value = 'fogon';
+        }
+        
+        // Resetear mensajes anteriores del formulario al abrir
+        if (modalMsg) {
+          modalMsg.textContent = '';
+          modalMsg.className = 'form-msg';
+        }
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        
+        // Foco de accesibilidad en el primer input
+        var nameInput = document.getElementById('mName');
+        if (nameInput) nameInput.focus();
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    // Cerrar al hacer click en el fondo (overlay)
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Cerrar con la tecla Escape
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    // Envío del formulario con animación de confirmación personalizada en UX Writing
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      var name = document.getElementById('mName').value.trim();
+      var email = document.getElementById('mEmail').value.trim();
+      var phone = document.getElementById('mPhone').value.trim();
+      var selectedServiceText = select.options[select.selectedIndex].text.split('—')[0].trim();
+
+      if (modalMsg) {
+        modalMsg.innerHTML = '¡Muchas gracias ' + name + '! Recibimos tu consulta sobre <b>' + selectedServiceText + '</b>.<br>Te escribiremos por WhatsApp al <b>' + phone + '</b> o a tu email en menos de 24 horas ✦';
+        modalMsg.style.color = 'var(--terracotta)';
+      }
+
+      form.reset();
+
+      // Cerrar modal automáticamente después de 3.5 segundos para comodidad del usuario
+      setTimeout(function () {
+        closeModal();
+      }, 3800);
+    });
   }
 
   /* ---------- Animación de aparición al hacer scroll ---------- */
