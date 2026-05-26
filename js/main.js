@@ -236,11 +236,13 @@
     if (!podList) return;
     podList.innerHTML = episodes.map(function (ep) {
       var isSong = ep.num === '♫' || ep.audioUrl;
+      var isLive = ep.spotifyUrl && ep.spotifyUrl !== '#' && ep.spotifyUrl !== 'https://open.spotify.com/';
       var songClass = isSong ? ' song-track' : '';
       var audioAttr = ep.audioUrl ? ' data-audio="' + ep.audioUrl + '"' : '';
-      var prontoBadge = !isSong ? ' <span class="badge-pronto">Próximamente</span>' : '';
+      var spotifyAttr = isLive ? ' data-spotify="' + ep.spotifyUrl + '"' : '';
+      var prontoBadge = (!isSong && !isLive) ? ' <span class="badge-pronto">Próximamente</span>' : '';
       return (
-        '<article class="pod-ep' + songClass + '" data-num="' + ep.num + '" data-duration="' + ep.duration + '"' + audioAttr + '>' +
+        '<article class="pod-ep' + songClass + '" data-num="' + ep.num + '" data-duration="' + ep.duration + '"' + audioAttr + spotifyAttr + '>' +
           '<div class="num">' + ep.num + '</div>' +
           '<div class="ep-info">' +
             '<h4>' + ep.title + prontoBadge + '</h4>' +
@@ -452,6 +454,7 @@
     var currentTrackTitle = 'Cielo de Sal (Tema de Ruta)';
     var currentTrackDuration = '3:24';
     var currentTrackAudioUrl = 'assets/Cielo_de_Sal.mp3';
+    var currentTrackSpotifyUrl = null;
 
     function parseDuration(durationStr) {
       if (!durationStr) return 1800;
@@ -588,8 +591,8 @@
               console.warn("Fallo autoplay de audio de fondo:", e);
             });
           }
-          // Disparar anuncio por voz nativa
-          if ('speechSynthesis' in window) {
+          // Disparar anuncio por voz nativa SOLO si no es live en Spotify
+          if (!currentTrackSpotifyUrl && 'speechSynthesis' in window) {
             window.speechSynthesis.cancel();
             var utterance = new SpeechSynthesisUtterance("La próxima semana estaré disponible");
             utterance.lang = "es-ES";
@@ -662,8 +665,12 @@
 
       var num = epCard.getAttribute('data-num') || '01';
       var title = epCard.querySelector('h4').textContent;
+      // Remover badge de "Próximamente" si existe en el título leído
+      title = title.replace('Próximamente', '').trim();
+      
       var duration = epCard.getAttribute('data-duration') || '45 min';
       var audioUrl = epCard.getAttribute('data-audio');
+      var spotifyUrl = epCard.getAttribute('data-spotify');
 
       // Detener cualquier simulación activa anterior
       stopSimulatedProgress();
@@ -673,6 +680,7 @@
       currentTrackTitle = title;
       currentTrackDuration = duration;
       currentTrackAudioUrl = audioUrl;
+      currentTrackSpotifyUrl = spotifyUrl;
 
       if (playerTitle && playerMeta) {
         // Actualiza panel de reproducción
@@ -711,9 +719,16 @@
         simulatedDuration = parseDuration(duration);
         simulatedCurrentTime = 0;
 
-        if (ppHint) {
-          ppHint.textContent = 'Teaser interactivo · Locución + banda sonora de ruta activas.';
+        if (spotifyUrl) {
+          if (ppHint) {
+            ppHint.innerHTML = '¡Episodio en vivo! <a href="' + spotifyUrl + '" target="_blank" style="color:var(--spotify); font-weight:700; text-decoration:underline;">Escuchalo completo en Spotify ✦</a>';
+          }
+        } else {
+          if (ppHint) {
+            ppHint.textContent = 'Teaser interactivo · Locución + banda sonora de ruta activas.';
+          }
         }
+        
         if (currentTimeLabel) currentTimeLabel.textContent = '0:00';
         if (durationLabel) durationLabel.textContent = formatTime(simulatedDuration);
         if (trackActive) {
@@ -750,8 +765,8 @@
             console.warn("Fallo autoplay de audio de fondo:", e);
           });
         }
-        // Emitir el anuncio por voz
-        if ('speechSynthesis' in window) {
+        // Emitir el anuncio por voz SOLO si no es live en Spotify
+        if (!spotifyUrl && 'speechSynthesis' in window) {
           window.speechSynthesis.cancel();
           var utterance = new SpeechSynthesisUtterance("La próxima semana estaré disponible");
           utterance.lang = "es-ES";
