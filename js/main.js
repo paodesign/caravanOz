@@ -833,15 +833,38 @@
 
     if (!modal || !form) return;
 
+    // Helper para actualizar el placeholder de consulta según el servicio seleccionado
+    function updatePlaceholder(serviceValue) {
+      var messageInput = document.getElementById('mMessage');
+      if (!messageInput) return;
+      if (serviceValue === 'cafe') {
+        messageInput.placeholder = '¿Cuáles son tus principales dudas sobre trámites, Rego o logística en Australia?';
+      } else if (serviceValue === 'compra') {
+        messageInput.placeholder = '¿Cuál es tu presupuesto estimado para el vehículo y qué tipo de ruta o viaje tenés en mente?';
+      } else if (serviceValue === 'pets') {
+        messageInput.placeholder = 'Contanos sobre tu mascota (perro, gato, etc.) y qué dudas tenés sobre la convivencia y campings en ruta.';
+      } else {
+        messageInput.placeholder = '¿Cuándo viajas? ¿Qué tipo de caravana estás buscando?';
+      }
+    }
+
+    // Escuchar cambios manuales en el desplegable
+    if (select) {
+      select.addEventListener('change', function () {
+        updatePlaceholder(select.value);
+      });
+    }
+
     // Escuchar clicks en toda la tarjeta del servicio para abrir el modal
     document.querySelectorAll('.m-plan-card').forEach(function (card) {
       card.addEventListener('click', function () {
         var btn = card.querySelector('.service-btn');
-        var serviceType = btn ? btn.getAttribute('data-service') : 'copilotos';
+        var serviceType = btn ? btn.getAttribute('data-service') : 'compra';
         if (select) {
-          if (serviceType === 'despegue') select.value = 'despegue';
-          else if (serviceType === 'copilotos') select.value = 'copilotos';
-          else if (serviceType === 'fogon') select.value = 'fogon';
+          if (serviceType === 'cafe') select.value = 'cafe';
+          else if (serviceType === 'compra') select.value = 'compra';
+          else if (serviceType === 'pets') select.value = 'pets';
+          updatePlaceholder(select.value);
         }
         
         // Resetear mensajes anteriores del formulario al abrir
