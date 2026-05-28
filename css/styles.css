@@ -515,6 +515,41 @@ a.gcard {
   color: var(--terracotta-d);
 }
 
+/* Type badge: Guide vs Article */
+.gtype-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 6px;
+  width: fit-content;
+}
+.gtype-badge.guide {
+  background: rgba(44, 93, 107, .10);
+  color: var(--ocean-d);
+}
+.gtype-badge.article {
+  background: rgba(186, 90, 49, .10);
+  color: var(--terracotta-d);
+}
+
+/* Article card accent: warm left border strip */
+.gcard--article {
+  border-left: 3px solid var(--terracotta);
+}
+.gcard--article:hover {
+  border-left-color: var(--terracotta-d);
+}
+.gcard--article .more {
+  color: var(--terracotta-d);
+}
+
+
 /* ============================================================
    LEVEL 4: ORGANISMS & LAYOUT
    ============================================================ */

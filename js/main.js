@@ -260,17 +260,21 @@
     var guidesGrid = document.getElementById('guidesGrid');
     if (!guidesGrid) return;
     guidesGrid.innerHTML = guides.map(function (g) {
+      var isArticle = g.type === 'article';
+      var typeBadge = isArticle
+        ? '<span class="gtype-badge article">✦ Art\u00edculo &middot; ' + (g.readTime || '') + '</span>'
+        : '<span class="gtype-badge guide">\uD83D\uDCCB Gu\u00eda pr\u00e1ctica</span>';
+      var cta = isArticle
+        ? 'Leer art\u00edculo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'
+        : 'Leer gu\u00eda <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
       return (
-        '<a href="' + g.url + '" class="gcard reveal" id="' + g.id + '">' +
+        '<a href="' + g.url + '" class="gcard reveal' + (isArticle ? ' gcard--article' : '') + '" id="' + g.id + '">' +
           '<div class="gicon ' + g.iconType + '">' + g.iconSvg + '</div>' +
+          typeBadge +
           '<span class="gtag">' + g.tag + '</span>' +
           '<h3>' + g.title + '</h3>' +
           '<p>' + g.description + '</p>' +
-          '<span class="more">Leer guía ' +
-            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-              '<path d="M5 12h14M13 6l6 6-6 6"/>' +
-            '</svg>' +
-          '</span>' +
+          '<span class="more">' + cta + '</span>' +
         '</a>'
       );
     }).join('');
@@ -449,6 +453,11 @@
     var durationLabel = document.getElementById('ppDuration');
     var ppHint = document.getElementById('ppHint');
 
+    // DOM switcher references for Spotify Player Iframe
+    var spotifyContainer = document.getElementById('spotifyPlayerContainer');
+    var spotifyPlayer = document.getElementById('spotifyPlayer');
+    var customContainer = document.getElementById('customPlayerContainer');
+
     // Inicializar el primer track por defecto ("Cielo de Sal")
     var currentTrackNum = '♫';
     var currentTrackTitle = 'Cielo de Sal (Tema de Ruta)';
@@ -565,6 +574,11 @@
 
     /* Acción del botón de reproducción principal */
     podPlay.addEventListener('click', function () {
+      if (currentTrackSpotifyUrl) {
+        window.open(currentTrackSpotifyUrl, '_blank');
+        return;
+      }
+
       var isPlaying = podPlay.classList.toggle('playing');
       
       if (playerContainer) {
@@ -682,6 +696,17 @@
       currentTrackAudioUrl = audioUrl;
       currentTrackSpotifyUrl = spotifyUrl;
 
+      // Si es un track local, nos aseguramos de apagar el reproductor de Spotify e iframe
+      if (spotifyContainer) {
+        spotifyContainer.style.display = 'none';
+      }
+      if (spotifyPlayer) {
+        spotifyPlayer.src = '';
+      }
+      if (customContainer) {
+        customContainer.style.display = 'block';
+      }
+
       if (playerTitle && playerMeta) {
         // Actualiza panel de reproducción
         if (num === '♫') {
@@ -692,6 +717,47 @@
           playerMeta.textContent = 'CaravanOz Podcast · ' + duration;
         }
         delete playerMeta.dataset.originalText;
+      }
+
+      // Si es un episodio en vivo en Spotify, cargar el iframe dinámico y ocultar el reproductor nativo
+      if (spotifyUrl && spotifyUrl !== '#' && spotifyUrl !== 'https://open.spotify.com/') {
+        var embedUrl = spotifyUrl;
+        if (spotifyUrl.indexOf('/episode/') !== -1) {
+          var parts = spotifyUrl.split('/episode/');
+          var idPart = parts[1].split('?')[0];
+          embedUrl = 'https://open.spotify.com/embed/episode/' + idPart + '?utm_source=generator&theme=0';
+        } else if (spotifyUrl.indexOf('/show/') !== -1) {
+          var parts = spotifyUrl.split('/show/');
+          var idPart = parts[1].split('?')[0];
+          embedUrl = 'https://open.spotify.com/embed/show/' + idPart + '?utm_source=generator&theme=0';
+        }
+
+        if (spotifyPlayer) {
+          spotifyPlayer.src = embedUrl;
+        }
+        if (spotifyContainer) {
+          spotifyContainer.style.display = 'block';
+        }
+        if (customContainer) {
+          customContainer.style.display = 'none';
+        }
+
+        isRealPlayback = false;
+        if (realAudio) {
+          realAudio.pause();
+        }
+        stopSimulatedProgress();
+        podPlay.classList.remove('playing');
+        if (playerContainer) {
+          playerContainer.classList.remove('playing');
+        }
+        podPlay.innerHTML = PLAY_ICON;
+        
+        if (ppHint) {
+          ppHint.innerHTML = '¡Episodio en vivo! Escuchalo directamente arriba o <a href="' + spotifyUrl + '" target="_blank" style="color:var(--spotify); font-weight:700; text-decoration:underline;">abrir en Spotify ✦</a>';
+        }
+        
+        return; // Detener la ejecución para evitar reproducir el tema local de fondo
       }
 
       // Configurar modo de reproducción
