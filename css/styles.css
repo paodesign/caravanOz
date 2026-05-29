@@ -2418,7 +2418,7 @@ a.gcard {
 /* Article Hero Banner */
 .article-hero {
   position: relative;
-  min-height: 50vh;
+  min-height: 40vh;
   padding-top: calc(var(--nav-h) + 60px);
   padding-bottom: 60px;
   background-size: cover;
