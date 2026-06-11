@@ -2125,14 +2125,13 @@ a.gcard {
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ============================================================ */
 
-/* Primary Breakpoint: Elevating to 1024px to completely solve desktop wrapping bugs */
+/* Primary Breakpoint: Tablet landscape / small desktop */
 @media (max-width: 1024px) {
-  /* Break sections slightly earlier */
   .section {
     padding: 84px 0;
   }
 
-  /* Structural Columns to Single Blocks */
+  /* --- Structural grids to single column --- */
   .mentoria .container {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -2157,6 +2156,10 @@ a.gcard {
     gap: 48px;
   }
 
+  .about-media {
+    order: -1;
+  }
+
   .pod-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -2175,7 +2178,7 @@ a.gcard {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Hamburger Menu logic activation */
+  /* --- Hamburger Menu activation --- */
   .nav-links {
     display: none;
   }
@@ -2202,20 +2205,26 @@ a.gcard {
     color: var(--terracotta);
   }
 
-  /* Hamburger mobile panel styles */
+  .nav.menu-open .hamburger span {
+    background: var(--ink);
+  }
+
+  /* --- Mobile menu panel --- */
   .mobile-menu {
     position: fixed;
-    top: 74px; /* adapt to menu-open/scrolled height */
+    top: var(--nav-h);
     left: 0;
     right: 0;
+    bottom: 0;
     z-index: 99;
     background: var(--cream);
     box-shadow: var(--shadow-md);
     padding: 16px 24px 28px;
-    display: none; /* Controlled via JS toggling open */
+    display: none;
     flex-direction: column;
     gap: 6px;
     border-top: 1px solid var(--cream-3);
+    overflow-y: auto;
   }
 
   .nav.scrolled + .mobile-menu {
@@ -2263,7 +2272,7 @@ a.gcard {
     padding: 14px 20px;
   }
 
-  /* Carousel adaptations */
+  /* --- Carousel adaptations --- */
   .videos .section-head {
     flex-direction: column;
     align-items: flex-start;
@@ -2274,22 +2283,57 @@ a.gcard {
     display: none;
   }
 
+  .carousel {
+    grid-auto-columns: minmax(270px, 85vw);
+  }
+
   .benefits {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
+  /* --- Hero tweaks --- */
   .hero-playhint {
     display: none;
   }
 
+  .hero-scene::before {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    right: 10%;
+  }
+
+  /* --- About --- */
   .about-media .float-stat {
     right: 8px;
+  }
+
+  /* --- Podcast episodes: allow text wrapping --- */
+  .pod-ep .ep-info h4 {
+    white-space: normal;
+  }
+
+  /* --- Diary rotation toned down --- */
+  .diary-slider {
+    grid-auto-columns: minmax(240px, 80vw);
   }
 }
 
 /* Screen widths below 768px (Tablet portrait / Large Mobile) */
 @media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .section-head {
+    margin-bottom: 40px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+  }
+
   .guides-grid {
     grid-template-columns: 1fr;
     gap: 22px;
@@ -2333,24 +2377,132 @@ a.gcard {
     flex-direction: column;
     text-align: center;
   }
+
+  /* --- Mentorship cards: reduce padding --- */
+  .m-plan-card {
+    padding: 32px 24px;
+  }
+
+  .m-plan-card h3 {
+    font-size: 1.35rem;
+  }
+
+  /* --- Podcast player --- */
+  .pod-player {
+    padding: 24px 20px;
+  }
+
+  .pp-controls {
+    gap: 18px;
+  }
+
+  /* --- Podcast episodes: stack info better --- */
+  .pod-ep {
+    padding: 14px 16px;
+    gap: 14px;
+  }
+
+  /* --- Diary: flatten rotation on mobile --- */
+  .diary-card {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  .diary-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* --- About section phone frame --- */
+  .phone-frame {
+    max-width: 280px;
+  }
+
+  .about-media .float-stat {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -20px;
+    transform: translateX(-50%);
+  }
+
+  .about-text h2 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+  }
+
+  /* --- Footer --- */
+  .footer {
+    padding: 60px 0 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* --- Scroll cue: hide on touch devices --- */
+  .scroll-cue {
+    display: none;
+  }
+
+  /* --- Modal: tighter on mobile --- */
+  .modal-content {
+    padding: 28px 22px;
+    border-radius: var(--r-md);
+  }
+
+  .modal-header h3 {
+    font-size: 1.4rem;
+  }
+
+  /* --- Article nav: compact on mobile --- */
+  .article-nav .container {
+    gap: 12px;
+  }
+
+  .article-nav .back-link {
+    font-size: 0.85rem;
+  }
+
+  .article-hero-inner h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  }
+
+  /* --- Guide cards: slightly less padding --- */
+  .gcard {
+    padding: 26px 22px;
+  }
 }
 
 /* Small Screens (Below 480px) */
 @media (max-width: 480px) {
   .section {
-    padding: 68px 0;
+    padding: 56px 0;
   }
 
+  .container {
+    padding: 0 16px;
+  }
+
+  /* --- Hero --- */
   .hero .container {
     padding-top: calc(var(--nav-h) + 10px);
   }
 
   .hero h1 {
-    font-size: 2.15rem;
+    font-size: 2rem;
+  }
+
+  .hero p.lead {
+    font-size: 1rem;
   }
 
   .hero-inner {
     text-align: left;
+  }
+
+  .hero-badge {
+    font-size: .78rem;
+    padding: 6px 12px;
   }
 
   .hero-actions {
@@ -2361,6 +2513,256 @@ a.gcard {
 
   .hero-actions .btn {
     width: 100%;
+    padding: 14px 24px;
+    font-size: .95rem;
+  }
+
+  .hero-scene::before {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* --- Navbar --- */
+  .nav {
+    height: 68px;
+  }
+
+  .nav.scrolled {
+    height: 62px;
+  }
+
+  .brand {
+    font-size: 1.25rem;
+    gap: 8px;
+  }
+
+  .brand .mark {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+  }
+
+  .mobile-menu {
+    top: 68px;
+    padding: 12px 16px 24px;
+  }
+
+  .nav.scrolled + .mobile-menu {
+    top: 62px;
+  }
+
+  /* --- Carousel & Cards --- */
+  .carousel {
+    grid-auto-columns: minmax(240px, 90vw);
+    gap: 16px;
+    padding: 8px 2px 20px;
+  }
+
+  .vcard .meta {
+    padding: 14px 16px 18px;
+  }
+
+  .thumb .title-on {
+    font-size: 1rem;
+    padding: 12px 14px 12px;
+  }
+
+  /* --- Podcast --- */
+  .pod-platforms {
+    flex-direction: column;
+  }
+
+  .pod-platforms .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pp-art {
+    width: 80px;
+    height: 80px;
+    flex: 0 0 80px;
+  }
+
+  .pp-controls .pp-play {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pod-ep .num {
+    width: 38px;
+    height: 38px;
+    font-size: .85rem;
+    border-radius: 10px;
+  }
+
+  .pod-ep .ep-info h4 {
+    font-size: .95rem;
+  }
+
+  .pod-ep .ep-play {
+    width: 36px;
+    height: 36px;
+  }
+
+  .badge-pronto {
+    font-size: .6rem;
+    padding: 2px 6px;
+    margin-left: 6px;
+  }
+
+  /* --- Mentorship --- */
+  .mentoria h2 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+
+  .m-plan-card {
+    padding: 28px 20px;
+  }
+
+  .m-plan-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .m-plan-card p.p-desc {
+    font-size: 0.88rem;
+  }
+
+  .m-plan-card ul.p-features li {
+    font-size: 0.88rem;
+  }
+
+  .m-plan-card .pill {
+    font-size: .72rem;
+    padding: 5px 12px;
+  }
+
+  /* --- Diary --- */
+  .diary-slider {
+    grid-auto-columns: minmax(220px, 85vw);
+    gap: 20px;
+  }
+
+  .diary-card p {
+    font-size: 1rem;
+  }
+
+  /* --- About --- */
+  .about-stats {
+    gap: 16px 28px;
+  }
+
+  .about-stats .st b {
+    font-size: 1.6rem;
+  }
+
+  .about-stats .st span {
+    font-size: .78rem;
+  }
+
+  /* --- Footer --- */
+  .footer {
+    padding: 48px 0 24px;
+  }
+
+  .footer h4 {
+    font-size: .95rem;
+    margin-bottom: 16px;
+  }
+
+  .newsletter h4 {
+    font-size: 1.25rem;
+  }
+
+  .footer-bottom {
+    font-size: .8rem;
+    padding-top: 20px;
+  }
+
+  /* --- Article pages --- */
+  .article-hero {
+    min-height: 30vh;
+    padding-top: calc(68px + 40px);
+    padding-bottom: 40px;
+  }
+
+  .article-meta {
+    font-size: .82rem;
+    gap: 10px 16px;
+  }
+
+  .article-section {
+    padding: 40px 0 60px;
+  }
+
+  /* --- Modal --- */
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 24px 18px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.25rem;
+    padding-right: 24px;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 14px;
+    font-size: 1.8rem;
+  }
+
+  /* --- Eyebrow smaller --- */
+  .eyebrow {
+    font-size: .72rem;
+  }
+
+  /* --- Guide cards --- */
+  .gcard {
+    padding: 22px 18px;
+  }
+
+  .gcard h3 {
+    font-size: 1.2rem;
+  }
+
+  .gcard p {
+    font-size: .9rem;
+  }
+
+  .gicon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+}
+
+/* Ultra-small screens (below 360px) */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-badge {
+    font-size: .72rem;
+  }
+
+  .carousel {
+    grid-auto-columns: minmax(200px, 92vw);
+  }
+
+  .diary-slider {
+    grid-auto-columns: minmax(190px, 90vw);
+  }
+
+  .m-plan-card {
+    padding: 24px 16px;
+  }
+
+  .brand {
+    font-size: 1.15rem;
   }
 }
 
