@@ -1161,6 +1161,9 @@ a.gcard {
   -webkit-backdrop-filter: blur(12px);
   box-shadow: var(--shadow-lg);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* When simulated playing */
@@ -1194,6 +1197,7 @@ a.gcard {
   display: flex;
   gap: 20px;
   align-items: center;
+  min-width: 0;
 }
 
 .pp-art {
@@ -1225,6 +1229,11 @@ a.gcard {
   to { transform: rotate(360deg); }
 }
 
+.pp-info {
+  min-width: 0;
+  overflow: hidden;
+}
+
 .pp-info h3 {
   color: var(--white);
   font-family: var(--font-body);
@@ -1232,11 +1241,16 @@ a.gcard {
   font-size: 1.15rem;
   margin-bottom: 6px;
   line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pp-info span {
   font-size: .88rem;
   color: rgba(255, 255, 255, 0.74);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pp-bar {
@@ -1363,6 +1377,8 @@ a.gcard {
   line-height: 1.6;
   border-top: 1px solid rgba(255,255,255,0.08);
   padding-top: 18px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Podcast Episode List Component */
@@ -1679,7 +1695,6 @@ a.gcard {
 .diary-wrap {
   position: relative;
   overflow: hidden;
-  padding: 10px 4px 30px;
 }
 
 .diary-slider {
@@ -1896,8 +1911,9 @@ a.gcard {
 
 /* Stat row */
 .about-stats {
-  display: flex;
-  gap: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-top: 32px;
   padding-top: 32px;
   border-top: 1px solid var(--cream-3);
@@ -2365,8 +2381,7 @@ a.gcard {
   }
 
   .about-stats {
-    flex-wrap: wrap;
-    gap: 20px 40px;
+    gap: 16px;
   }
 
   .hero h1 {
@@ -2376,6 +2391,13 @@ a.gcard {
   .pp-card {
     flex-direction: column;
     text-align: center;
+  }
+
+  .pp-info h3,
+  .pp-info span {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
   }
 
   /* --- Mentorship cards: reduce padding --- */
@@ -2475,6 +2497,10 @@ a.gcard {
 
 /* Small Screens (Below 480px) */
 @media (max-width: 480px) {
+  :root {
+    --nav-h: 68px;
+  }
+
   .section {
     padding: 56px 0;
   }
@@ -2577,6 +2603,10 @@ a.gcard {
     justify-content: center;
   }
 
+  .pod-player {
+    padding: 20px 16px;
+  }
+
   .pp-art {
     width: 80px;
     height: 80px;
@@ -2648,7 +2678,7 @@ a.gcard {
 
   /* --- About --- */
   .about-stats {
-    gap: 16px 28px;
+    gap: 12px;
   }
 
   .about-stats .st b {
@@ -2977,21 +3007,6 @@ a.gcard {
   line-height: 1.6;
 }
 
-/* Responsive adjustments for articles */
-@media (max-width: 768px) {
-  .article-section {
-    padding: 50px 0 70px;
-  }
-  .article-body {
-    font-size: 1.06rem;
-    line-height: 1.65;
-  }
-  .article-body h2 {
-    font-size: 1.6rem;
-    margin-top: 36px;
-  }
-}
-
 /* Related Articles Recommendation Section */
 .article-related {
   background: var(--cream-2);
@@ -3019,19 +3034,99 @@ a.gcard {
   margin: 0 auto;
 }
 
+/* Responsive adjustments for articles */
 @media (max-width: 768px) {
+  .article-section {
+    padding: 50px 0 70px;
+  }
+  .article-body {
+    font-size: 1.06rem;
+    line-height: 1.65;
+  }
+  .article-body h2 {
+    font-size: 1.6rem;
+    margin-top: 36px;
+  }
+  .article-nav {
+    height: 68px;
+  }
+  .article-nav .container {
+    gap: 8px;
+  }
+  /* Hide the spacer div on mobile */
+  .article-nav .container > div[style*="width: 100px"] {
+    display: none;
+  }
+  .callout-card {
+    padding: 20px 22px;
+  }
   .article-related {
     padding: 60px 0 80px;
   }
-  
   .article-related h3.related-title {
     font-size: 1.65rem;
     margin-bottom: 32px;
   }
-  
   .article-related .related-grid {
     grid-template-columns: 1fr;
     gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-nav {
+    height: 62px;
+  }
+  .article-nav .back-link {
+    font-size: .82rem;
+    gap: 4px;
+  }
+  .article-nav .back-link svg {
+    width: 14px;
+    height: 14px;
+  }
+  .article-hero {
+    min-height: 28vh;
+    padding-top: calc(62px + 30px);
+    padding-bottom: 32px;
+  }
+  .article-hero-inner h1 {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+  }
+  .article-section {
+    padding: 36px 0 50px;
+  }
+  .article-body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .article-body h2 {
+    font-size: 1.4rem;
+    margin: 32px 0 14px;
+  }
+  .article-body h3 {
+    font-size: 1.2rem;
+    margin: 24px 0 12px;
+  }
+  .article-body ul, .article-body ol {
+    padding-left: 18px;
+  }
+  .callout-card {
+    padding: 18px 16px;
+    margin: 28px 0;
+  }
+  .callout-card h4 {
+    font-size: .95rem;
+  }
+  .callout-card p {
+    font-size: .92rem;
+  }
+  .article-related {
+    padding: 48px 0 64px;
+  }
+  .article-related h3.related-title {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
   }
 }
 
@@ -3138,6 +3233,23 @@ a.gcard {
   margin-top: 0;
 }
 
+@media (max-width: 480px) {
+  .syllabus-tabs {
+    gap: 4px;
+    padding: 3px;
+  }
+  .s-tab {
+    font-size: 0.72rem;
+    padding: 7px 4px;
+  }
+  .s-panel h4 {
+    font-size: 1rem;
+  }
+  .s-panel p {
+    font-size: 0.88rem;
+  }
+}
+
 /* ============================================================
    MODAL POPUP FORM (SERVICE INQUIRIES)
    ============================================================ */
@@ -3168,6 +3280,8 @@ a.gcard {
   padding: 40px;
   width: 100%;
   max-width: 520px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
   position: relative;
   box-shadow: var(--shadow-lg);
   transform: translateY(20px) scale(0.96);
