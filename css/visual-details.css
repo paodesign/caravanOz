@@ -1,0 +1,91 @@
+/* CaravanOz: shared icon rhythm, purposeful motion and surface refinement. */
+.modern-icon{width:22px;height:22px;display:inline-block;flex-shrink:0;vertical-align:middle}
+.link-icon{display:inline-flex;align-items:center;justify-content:center;margin-left:7px;transition:transform .25s ease}
+.link-icon .modern-icon{width:17px;height:17px}
+a:hover>.link-icon,.btn:hover .link-icon{transform:translate(2px,-2px)}
+.reading-progress{position:fixed;top:0;left:0;right:0;height:3px;background:#ffb44e;transform-origin:left;transform:scaleX(0);z-index:1000;pointer-events:none}
+.home-page .nav{box-shadow:0 3px 20px #163f4905}
+.home-page .brand .mark{box-shadow:none;filter:none;border-radius:10px;background:transparent}
+.home-page .brand .mark img{border-radius:9px}
+.home-page .hero{background:#f5f8f7}
+.home-page .hero-badge{display:inline-flex;align-items:center;gap:10px;letter-spacing:.14em}
+.home-page .hero-badge:before{content:'';width:7px;height:7px;border-radius:50%;background:#b94c29;box-shadow:0 0 0 5px #b94c2910}
+.home-page .hero h1{font-weight:600;letter-spacing:-2.8px}
+.home-page .hero-photo{border-radius:110px 18px 18px 18px;box-shadow:0 18px 50px #163f4910}
+.home-page .hero-photo>img{object-position:center}
+.home-page .hero-note{letter-spacing:.02em}
+.home-page .hero-note .modern-icon{width:18px;height:18px;color:#b94c29}
+.home-page .photo-stamp{font-weight:500;border:1px solid #ffffff80;box-shadow:0 6px 20px #163f4912;border-radius:8px}
+.home-page .photo-stamp .link-icon{margin:0}
+.home-page .btn,.guide-hero .button,.closing .button{transition:background .2s,box-shadow .25s,transform .25s}
+.home-page .btn-primary:hover{box-shadow:0 6px 16px #95391d20;transform:translateY(-2px)}
+.home-page .start-here{background:#eaf0ed;padding:32px 0}
+.home-page .start-grid{gap:16px;align-items:stretch}
+.home-page .start-grid>p{align-self:center}
+.home-page .start-grid>a{display:grid;grid-template-columns:42px 1fr;gap:4px 12px;border:1px solid #d3dfdb;border-radius:12px;padding:20px 16px;background:#f8faf8;transition:transform .25s,border-color .25s,box-shadow .25s}
+.home-page .start-grid>a:hover{transform:translateY(-4px);border-color:#b94c2966;box-shadow:0 10px 25px #163f4909}
+.home-page .start-grid>a>.step-icon{grid-column:1;grid-row:1/4;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#e3eeea;color:#275e53;letter-spacing:0}
+.home-page .start-grid>a:first-of-type>.step-icon{background:#fff0df;color:#a64122}
+.home-page .start-grid>a>span:not(.step-icon),.home-page .start-grid>a>strong,.home-page .start-grid>a>small{grid-column:2}
+.home-page .start-grid>a>span:not(.step-icon){font-size:8px;letter-spacing:.09em}
+.home-page .start-grid>a>strong{font-size:16px;line-height:1.4}
+.home-page .start-grid>a>small{font-size:11px;line-height:1.55}
+.home-page .start-grid .link-icon{margin-left:1px}.home-page .start-grid .link-icon svg{width:14px;height:14px}
+.home-page .eyebrow{letter-spacing:.16em}
+.home-page .section-head h2{font-weight:500;line-height:1.12}
+.home-page .vcard{transition:transform .3s,box-shadow .3s,border-color .3s}
+.home-page .vcard:hover{transform:translateY(-5px);box-shadow:0 14px 35px #163f4910;border-color:#a6bfb5}
+.home-page .vcard .thumb{overflow:hidden}.home-page .vcard .thumb>img{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.home-page .vcard:hover .thumb>img{transform:scale(1.04)}
+.home-page .vcard .ytplay{border:1px solid #ffffff80;width:50px;height:50px;background:#fffef5f2;color:#173c40;box-shadow:0 4px 20px #163f4922}
+.home-page .ytplay .modern-icon{width:21px;height:21px;transform:translateX(1px)}
+.home-page .gcard{position:relative;display:flex;flex-direction:column;align-items:stretch;transition:border-color .25s,transform .25s,box-shadow .25s}
+.home-page .gcard .topic-icon{align-self:flex-start}
+.home-page .gcard:hover{transform:translateY(-5px);border-color:#b94c2955;box-shadow:0 12px 32px #163f490a}
+.topic-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;background:#e9f1ed;color:#275e53;margin-bottom:24px}
+#guide-arrival{background:#fff8ec;border-color:#e4ccaa}#guide-arrival .topic-icon{color:#a64122;background:#ffe9c7}
+.home-page .gcard .gtag{font-size:9px;letter-spacing:.12em}
+.home-page .gcard .more{margin-top:auto;font-size:12px;display:flex;align-items:center;justify-content:space-between}
+.home-page .gcard .more .link-icon{margin-left:20px;background:#f1f5f1;width:30px;height:30px;border-radius:50%}
+.home-page .guide-mark{transform:none;background:#ffffff08;border:1px solid #ffb44e66;border-radius:10px;gap:10px;font-size:8px;letter-spacing:.13em;box-shadow:-4px 4px 0 #ffffff0a}
+.home-page .guide-mark .modern-icon{width:30px;height:30px;justify-self:center}
+.home-page .free-guide{position:relative;overflow:hidden}
+.home-page .free-guide:after{content:'';position:absolute;width:330px;height:330px;border:1px dashed #ffffff12;border-radius:50%;right:-140px;top:-170px;pointer-events:none}
+.home-page .free-guide-inner{position:relative;z-index:1}
+.home-page .free-guide .btn:hover{background:#ffc46d;transform:translateY(-2px)}
+.home-page .m-plan-card .p-icon{width:54px;height:54px;border-radius:15px;border:1px solid #ffffff25;background:#ffffff0c;color:#ffce8a}
+.home-page .m-plan-card .p-icon .modern-icon{width:27px;height:27px}
+.home-page .m-plan-card{transition:border-color .25s,transform .3s,background .3s}
+.home-page .m-plan-card:hover{background:#ffffff0d;border-color:#ffffff66;transform:translateY(-5px)}
+.home-page .m-plan-card.featured{border-color:#ffb44e88;background:#ffffff09}
+.home-page .m-plan-card.featured .p-icon{background:#ffb44e15;color:#ffb44e}
+.home-page .wave .modern-icon{width:31px;height:31px;color:#b94c29;vertical-align:baseline}
+.contents nav a{display:flex;align-items:center;gap:10px;border-radius:6px;transition:background .2s,color .2s,padding .2s}
+.contents nav a .modern-icon{width:16px;height:16px;color:#64817d}
+.contents nav a[aria-current]{background:#e4ede7;padding-left:10px;color:#173f49;font-weight:600}
+.contents nav a:hover{background:#edf1ec;padding-left:10px}
+.guide-body .stage{display:flex;align-items:center;gap:10px}
+.guide-body .stage>.modern-icon{width:18px;height:18px}
+.guide-nav #printGuide{display:flex;align-items:center;justify-content:center;gap:9px}
+.guide-nav #printGuide .modern-icon{width:16px;height:16px}
+.ticket-top .ticket-plane .modern-icon{width:25px;height:25px;transform:rotate(-15deg)}
+.flight-path{position:relative;display:grid;place-items:center;min-width:65px}
+.flight-path:before{content:'';position:absolute;top:50%;left:0;right:0;border-top:1px dashed #ffb44e88}
+.flight-path .modern-icon{position:relative;background:#163f49;padding:4px;width:32px;height:32px}
+.boarding-card{transition:transform .4s,box-shadow .4s}
+.ticket-secret[open]>strong{animation:secret-appear .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes secret-appear{from{opacity:0;transform:translateY(7px);letter-spacing:.3em}to{opacity:1;transform:translateY(0);letter-spacing:.17em}}
+@media(prefers-reduced-motion:no-preference){
+ .home-page .hero-inner>*{animation:hero-arrive .75s cubic-bezier(.16,1,.3,1) both}
+ .home-page .hero-inner>*:nth-child(2){animation-delay:.07s}.home-page .hero-inner>*:nth-child(3){animation-delay:.14s}.home-page .hero-inner>*:nth-child(4){animation-delay:.21s}.home-page .hero-inner>*:nth-child(5){animation-delay:.28s}
+ .home-page .hero-photo{animation:photo-arrive 1s cubic-bezier(.16,1,.3,1) both}
+ .ticket-flight .flight-path .modern-icon{animation:depart 1.3s .3s cubic-bezier(.16,1,.3,1) both}
+ @keyframes hero-arrive{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+ @keyframes photo-arrive{from{opacity:.4;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+ @keyframes depart{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+}
+@media(hover:hover) and (pointer:fine){.boarding-card:hover{transform:rotate(0deg) translateY(-4px);box-shadow:10px 18px 0 #e2eae5}}
+@media(max-width:1100px){.home-page .start-grid{grid-template-columns:1fr 1fr}.home-page .start-grid>p{padding:12px 0}.home-page .start-grid>a>strong{font-size:17px}}
+@media(max-width:700px){.home-page .start-grid{grid-template-columns:1fr;gap:12px}.home-page .start-grid>p{padding:0;margin-bottom:6px}.home-page .start-grid>a{padding:18px}.home-page .hero h1{letter-spacing:-1.6px}.home-page .hero-photo{border-radius:60px 14px 14px 14px}.topic-icon{margin-bottom:20px}.contents nav a{font-size:11px;gap:7px}.contents nav a .modern-icon{width:14px;height:14px}.ticket-top .ticket-plane .modern-icon{width:22px;height:22px}.home-page .photo-stamp{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.reading-progress{display:none}.guide-body .stage>.modern-icon{display:none}}

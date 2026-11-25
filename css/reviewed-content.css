@@ -1,0 +1,13 @@
+.reviewed-hero{max-width:970px;margin:auto;padding:64px 40px 42px;border-bottom:1px solid var(--line)}
+.reviewed-hero h1{font-size:clamp(36px,4.5vw,56px);max-width:850px;letter-spacing:-1.7px;line-height:1.08}
+.reviewed-hero>p{color:var(--muted);max-width:700px;font-size:17px;margin-bottom:22px}
+.reviewed-date{font-size:11px;color:#687d7c;line-height:1.6}
+.reviewed-body{max-width:820px;padding:42px 40px 70px;margin:auto}
+.reviewed-body p{font-size:16px;line-height:1.85}
+.reviewed-body h2{font-size:29px;line-height:1.2;margin:38px 0 18px}
+.reviewed-sources{border-top:1px solid var(--line);margin-top:38px;padding-top:4px}
+.reviewed-sources ul{padding-left:20px;font-size:13px}.reviewed-sources li{margin:10px 0}
+.reviewed-sources>p{font-size:12px}
+.reviewed-body .closing{margin-top:32px}.reviewed-body .closing h2{margin-top:0}
+@media(max-width:700px){.reviewed-hero{padding:38px 22px 28px}.reviewed-body{padding:28px 22px 48px}.reviewed-body h2{font-size:25px}.reviewed-body p{font-size:15px}.reviewed-hero>p{font-size:15px}.reviewed-hero h1{font-size:38px}}
+@media print{.reviewed-hero,.reviewed-body{padding:0;max-width:none}.reviewed-hero h1{font-size:28pt}.reviewed-body p{font-size:10pt}.reviewed-sources{break-before:auto}}

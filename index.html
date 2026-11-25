@@ -6,7 +6,7 @@
 
 <!-- ===== SEO ===== -->
 <title>CaravanOz — Vida nómada en caravana por Australia</title>
-<meta name="description" content="Tips, rutas y la realidad de vivir viajando en caravana por Australia desde 2023. Guías, videos, podcast y mentoría para la comunidad hispanohablante." />
+<meta name="description" content="Tips, rutas y la realidad de vivir viajando en caravana por Australia desde 2023. Guías, videos, podcast y asesorías para la comunidad hispanohablante." />
 <meta name="author" content="CaravanOz — Leo & Pao" />
 <meta name="theme-color" content="#2C5D6B" />
 <link rel="canonical" href="https://paodesign.github.io/caravanOz/" />
@@ -31,18 +31,19 @@
 <meta name="twitter:image" content="https://paodesign.github.io/caravanOz/assets/og-image.png" />
 
 <!-- ===== Favicons ===== -->
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-<link rel="icon" href="assets/favicon-512.png" sizes="512x512" type="image/png" />
-<link rel="apple-touch-icon" href="assets/favicon-180.png" />
+<link rel="icon" href="assets/logo-caravanoz.png" type="image/png" />
+<link rel="icon" href="assets/logo-caravanoz.png" sizes="512x512" type="image/png" />
+<link rel="apple-touch-icon" href="assets/logo-caravanoz.png" />
 <link rel="manifest" href="manifest.webmanifest" />
 
 <!-- ===== Fonts ===== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- ===== Styles ===== -->
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/home.css" />
 
 <!-- ===== Datos estructurados (SEO) ===== -->
 <script type="application/ld+json">
@@ -52,36 +53,40 @@
   "name": "CaravanOz",
   "description": "Vida nómada en caravana por Australia. Tips, rutas, videos y podcast para la comunidad hispanohablante.",
   "url": "https://paodesign.github.io/caravanOz/",
-  "logo": "https://paodesign.github.io/caravanOz/assets/favicon-512.png",
+  "logo": "https://paodesign.github.io/caravanOz/assets/logo-caravanoz.png",
   "sameAs": [
     "https://www.youtube.com/@CaravanOz",
-    "https://instagram.com/paolamedina.caravanoz"
+    "https://www.instagram.com/paomedina.mivida_en_aus/"
   ]
 }
 </script>
+<link rel="stylesheet" href="css/visual-details.css">
+<link rel="stylesheet" href="css/asesorias.css">
+<script src="js/visual-details.js" defer></script>
 </head>
-<body>
+<body class="home-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- ============================ NAVBAR ============================ -->
 <header class="nav" id="nav">
   <div class="container">
     <a href="#inicio" class="brand" aria-label="CaravanOz inicio">
-      <span class="mark"><img src="assets/logo.svg" alt="Logo CaravanOz" width="48" height="48" /></span>
+      <span class="mark"><img src="assets/logo-caravanoz.png" alt="Logo CaravanOz" width="48" height="48" /></span>
       Caravan<b>Oz</b>
     </a>
 
     <nav class="nav-links" aria-label="Principal">
       <a href="#inicio">Inicio</a>
-      <a href="#guias">Guías de Viaje</a>
+      <a href="guias/primeros-pasos-australia.html">Guía gratis</a>
       <a href="#videos">YouTube</a>
       <a href="#podcast">Podcast</a>
-      <a href="#mentoria">Mentoría</a>
+      <a href="#asesorias">Asesorías</a>
       <a href="#nosotros">Sobre Nosotros</a>
     </nav>
 
     <div class="nav-cta">
-      <a href="#newsletter" class="btn btn-primary">Suscribite al Newsletter</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <a href="#asesorias" class="btn btn-primary">Charlamos de tu viaje</a>
+      <button class="hamburger" id="hamburger" aria-controls="mobileMenu" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -90,58 +95,53 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#inicio">Inicio</a>
-  <a href="#guias">Guías de Viaje</a>
+  <a href="guias/primeros-pasos-australia.html">Guía gratis</a>
   <a href="#videos">YouTube</a>
   <a href="#podcast">Podcast</a>
-  <a href="#mentoria">Mentoría</a>
+  <a href="#asesorias">Asesorías</a>
   <a href="#nosotros">Sobre Nosotros</a>
-  <a href="#newsletter" class="btn btn-primary">Suscribite al Newsletter</a>
+  <a href="#asesorias" class="btn btn-primary">Charlamos de tu viaje</a>
 </div>
 
 <!-- ============================ HERO ============================ -->
+
+<main id="contenido">
 <section class="hero" id="inicio">
-  <div class="hero-media">
-    <!--
-      ▶ B-ROLL DE PANTALLA COMPLETA
-      Para usar tu video de paisaje (caravana en la ruta / frente al mar),
-      descomentá el <video> y dejá un clip horizontal en assets/ (ej. hero.mp4):
-
-      <video autoplay muted loop playsinline poster="assets/poster.jpg">
-        <source src="assets/hero.mp4" type="video/mp4">
-      </video>
-    -->
-    <div class="hero-scene" role="img" aria-label="Atardecer sobre la costa australiana"></div>
-  </div>
-  <div class="hero-overlay"></div>
-
-  <div class="container">
+  <div class="container hero-layout">
     <div class="hero-inner">
-      <span class="hero-badge"><span class="dot"></span> En la ruta desde 2023 · Australia 🇦🇺</span>
-      <h1>Descubrí la verdadera <em>vida nómada</em> en Australia</h1>
-      <p class="lead">Tips, rutas y la realidad de vivir viajando en caravana desde 2023. Una comunidad para hispanohablantes que sueñan con largarse al camino.</p>
+      <span class="hero-badge">LEO + PAO · AUSTRALIA EN CARAVANA</span>
+      <h1>Una casa con ruedas.<br>Un camino <em>por descubrir.</em></h1>
+      <p class="lead">Somos dos argentinos recorriendo Australia desde 2023. Compartimos las rutas, las decisiones y la vida cotidiana que hay detrás de cada postal.</p>
       <div class="hero-actions">
-        <a href="#videos" class="btn btn-primary">▶ Ver Último Video</a>
-        <a href="#guias" class="btn btn-ghost-light">Explorar Guías de Ruta</a>
+        <a href="guias/primeros-pasos-australia.html" class="btn btn-primary">Tu guía gratis de llegada <span aria-hidden="true">↗</span></a>
+        <a href="#videos" class="hero-text-link">Vení a viajar con nosotros →</a>
       </div>
+      <div class="hero-note"><span aria-hidden="true">↳</span> Nuestra experiencia, contada en español.</div>
     </div>
+    <figure class="hero-photo">
+      <img src="assets/about-couple-sin-marca.jpg" alt="Leo y Pao juntos en un mirador de Australia" width="1400" height="788" fetchpriority="high">
+      <figcaption><span>POSTALES DEL CAMINO</span><b>La ruta también es casa.</b></figcaption>
+      <a href="#nosotros" class="photo-stamp">Conocé nuestra historia <span aria-hidden="true">↗</span></a>
+    </figure>
   </div>
-
-  <div class="hero-playhint">
-    <span class="play-circle" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-    <span>Reproduciendo<br>B-roll de la ruta</span>
-  </div>
-
-  <div class="scroll-cue" aria-hidden="true"><span class="mouse"></span> Scroll</div>
 </section>
-
+<section class="start-here" aria-label="Encontrá tu próximo paso">
+  <div class="container start-grid">
+    <p>¿Por dónde<br><strong>querés empezar?</strong></p>
+    <a href="guias/primeros-pasos-australia.html"><span>RECIÉN LLEGO A AUSTRALIA</span><strong>Tus primeros pasos ↗</strong><small>Guía gratuita, práctica y sin registro.</small></a>
+    <a href="#videos"><span>QUIERO INSPIRARME</span><strong>Historias de la ruta ↗</strong><small>Videos, lugares y vida cotidiana.</small></a>
+    <a href="#asesorias"><span>NECESITO UNA MANO</span><strong>Conversemos de tu plan ↗</strong><small>Asesorías para preparar tu viaje.</small></a>
+  </div>
+</section>
 <!-- ============================ ÚLTIMOS VIDEOS ============================ -->
+<section class="free-guide" id="guia-gratis" aria-labelledby="free-guide-title"><div class="container free-guide-inner"><div class="guide-mark" aria-hidden="true">PRIMER<br>TRAMO<br>↗ AU</div><div><span class="eyebrow">PARA GUARDAR Y VOLVER A CONSULTAR</span><h2 id="free-guide-title">Tu llegada a Australia, paso a paso.</h2><p>Aeropuerto, teléfono, banco, TFN, alojamiento, salud y trabajo. Una guía en español con checklist y enlaces oficiales para organizar tus primeros días.</p></div><a class="btn" href="guias/primeros-pasos-australia.html">Consultar gratis ↗</a></div></section>
 <section class="section videos" id="videos">
   <div class="container">
     <div class="section-head reveal">
       <div class="txt">
-        <span class="eyebrow">Últimos Videos</span>
-        <h2>Lo último desde la ruta</h2>
-        <p>Acompañanos en cada kilómetro. Subimos episodios nuevos directo desde la caravana.</p>
+        <span class="eyebrow">En YouTube</span>
+        <h2>Australia, del otro lado de la cámara</h2>
+        <p>Campings, caminos y días comunes en una casa con ruedas. Encontrá nuestras historias en YouTube.</p>
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:16px;">
         <a href="https://www.youtube.com/@CaravanOz" target="_blank" rel="noopener" class="yt-link">
@@ -157,58 +157,10 @@
 
     <div class="carousel-wrap">
       <div class="carousel" id="carousel">
-        <article class="vcard">
-          <div class="thumb">
-            <div class="ph grad-1"></div>
-            <span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="dur">19:50</span>
-            <div class="title-on">Vida Nómada · 1 Año en Queensland</div>
-          </div>
-          <div class="meta">
-            <span class="tag">Reflexiones</span>
-            <h3>Un año entero recorriendo Queensland en caravana</h3>
-            <span class="sub">Hace 2 semanas · 4,2 mil vistas</span>
-          </div>
-        </article>
-        <article class="vcard">
-          <div class="thumb">
-            <div class="ph grad-2"></div>
-            <span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="dur">42:43</span>
-            <div class="title-on">¿Qué hacer en Cairns?</div>
-          </div>
-          <div class="meta">
-            <span class="tag">Guía de destino</span>
-            <h3>Qué hacer en Cairns + mejoras a la caravana y sorpresas épicas</h3>
-            <span class="sub">Hace 1 mes · 6,8 mil vistas</span>
-          </div>
-        </article>
-        <article class="vcard">
-          <div class="thumb">
-            <div class="ph grad-3"></div>
-            <span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="dur">20:23</span>
-            <div class="title-on">Vida en Caravana · La verdad</div>
-          </div>
-          <div class="meta">
-            <span class="tag">La realidad</span>
-            <h3>La verdad detrás del romanticismo del camping</h3>
-            <span class="sub">Hace 1 mes · 9,1 mil vistas</span>
-          </div>
-        </article>
-        <article class="vcard">
-          <div class="thumb">
-            <div class="ph grad-4"></div>
-            <span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="dur">7:55</span>
-            <div class="title-on">Cairns &amp; Kuranda · Aventura Épica</div>
-          </div>
-          <div class="meta">
-            <span class="tag">Aventura</span>
-            <h3>Cairns y Kuranda: una aventura épica entre la selva</h3>
-            <span class="sub">Hace 2 meses · 5,3 mil vistas</span>
-          </div>
-        </article>
+        <a class="vcard" href="https://www.youtube.com/watch?v=6cUM57P5Yg8" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/6cUM57P5Yg8/hq720.jpg" alt="" width="640" height="360" loading="lazy"></div><div class="meta"><span class="tag">Reflexiones</span><h3>Un año nómada: Queensland en caravana y drone</h3><span class="sub">Ver episodio en YouTube ↗</span></div></a>
+        <a class="vcard" href="https://www.youtube.com/watch?v=1MDkd85dzic" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/1MDkd85dzic/hq720.jpg" alt="" width="640" height="360" loading="lazy"></div><div class="meta"><span class="tag">Guía de destino</span><h3>¿Qué hacer en Cairns? Mejoras de caravana y sorpresas</h3><span class="sub">Ver episodio en YouTube ↗</span></div></a>
+        <a class="vcard" href="https://www.youtube.com/watch?v=VmrwHxQwXjI" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/VmrwHxQwXjI/hq720.jpg" alt="" width="640" height="360" loading="lazy"></div><div class="meta"><span class="tag">La realidad</span><h3>Vida en caravana: la verdad detrás del romanticismo del camping</h3><span class="sub">Ver episodio en YouTube ↗</span></div></a>
+        <a class="vcard" href="https://www.youtube.com/watch?v=C4oDu7F4fW4" target="_blank" rel="noopener"><div class="thumb"><img src="https://i.ytimg.com/vi/C4oDu7F4fW4/hq720.jpg" alt="" width="640" height="360" loading="lazy"></div><div class="meta"><span class="tag">Aventura</span><h3>Cairns a Kuranda: Skyrail y selva</h3><span class="sub">Ver episodio en YouTube ↗</span></div></a>
       </div>
     </div>
   </div>
@@ -222,7 +174,7 @@
       <h2>Escuchá CaravanOz mientras manejás</h2>
       <p>Charlas largas y sin filtro sobre la vida en la ruta, decisiones difíciles y todo lo que no entra en un video. Llevanos en tus auriculares a donde vayas.</p>
       <div class="pod-platforms">
-        <a href="https://open.spotify.com/" target="_blank" rel="noopener" class="btn btn-spotify">
+        <a href="https://open.spotify.com/episode/2NSMjXxEZEpoRgpgSFnaIJ" target="_blank" rel="noopener" class="btn btn-spotify">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.3-2.1-10.5-1.1a.75.75 0 1 1-.33-1.46c4.6-1 8.5-.6 11.6 1.3.35.22.46.7.23 1.02zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-2-8.1-2.5-11.9-1.36a.94.94 0 1 1-.54-1.8c4.35-1.3 9.75-.74 13.42 1.55.44.27.58.85.31 1.3zm.13-3.4C15.4 8.3 8.9 8.06 5.3 9.16a1.12 1.12 0 1 1-.65-2.15c4.13-1.25 11.3-1 15.74 1.63a1.12 1.12 0 1 1-1.15 1.92z"/></svg>
           Escuchar en Spotify
         </a>
@@ -233,94 +185,17 @@
       </div>
     </div>
 
-    <div class="pod-grid">
-      <!-- Reproductor destacado (demo). Reemplazá por el <iframe> real de Spotify. -->
-      <div class="pod-player reveal">
-        <div class="pp-now">Último episodio</div>
-        
-        <!-- Iframe para reproductor real de Spotify (dinámico) -->
-        <div id="spotifyPlayerContainer" style="display: none; margin-bottom: 12px; width: 100%;">
-          <iframe id="spotifyPlayer" style="border-radius:12px; border:none;" src="" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-
-        <!-- Contenedor del reproductor nativo personalizado (fallback local) -->
-        <div id="customPlayerContainer">
-          <div class="pp-card">
-            <div class="pp-art"><img src="assets/favicon-512.png" alt="Tapa del podcast CaravanOz" /></div>
-            <div class="pp-info">
-              <h3>Cielo de Sal — Tema de Ruta</h3>
-              <span>CaravanOz Podcast · Banda Sonora</span>
-            </div>
-          </div>
-          <div class="pp-bar">
-            <div class="pp-track" id="ppTrack">
-              <i style="width: 0%;"></i>
-            </div>
-            <div class="pp-time"><span id="ppCurrentTime">0:00</span><span id="ppDuration">3:24</span></div>
-          </div>
-          <div class="pp-controls">
-            <button aria-label="Anterior" id="podPrev"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
-            <button class="pp-play" id="podPlay" aria-label="Reproducir"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></button>
-            <button aria-label="Siguiente" id="podNext"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zm-2.5 6L5 6v12z"/></svg></button>
-          </div>
-        </div>
-        
-        <p class="pp-hint" id="ppHint">Reproductor interactivo real · Seleccioná Cielo de Sal para reproducir audio real.</p>
-      </div>
-
-      <!-- Lista de episodios -->
-      <div class="pod-list reveal" id="podList">
-        <article class="pod-ep song-track" data-num="♫" data-duration="3:24" data-audio="assets/Cielo_de_Sal.mp3">
-          <div class="num">♫</div>
-          <div class="ep-info">
-            <h4>Cielo de Sal (Tema de Ruta)</h4>
-            <span>3:24 · Banda Sonora</span>
-          </div>
-          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </article>
-        <article class="pod-ep" data-num="01" data-duration="52 min" data-spotify="https://open.spotify.com/episode/2NSMjXxEZEpoRgpgSFnaIJ?si=_z7M40MFTCWy8rAfg688_g">
-          <div class="num">01</div>
-          <div class="ep-info">
-            <h4>Resetear la vida y el choque cultural de migrar a Australia</h4>
-            <span>52 min · hoy</span>
-          </div>
-          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </article>
-        <article class="pod-ep" data-num="02" data-duration="44 min">
-          <div class="num">02</div>
-          <div class="ep-info">
-            <h4>Trabajar online viajando: lo bueno y lo feo &mdash; <span class="badge-pronto">Próximamente</span></h4>
-            <span>44 min · próxima semana</span>
-          </div>
-          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </article>
-        <article class="pod-ep" data-num="03" data-duration="39 min">
-          <div class="num">03</div>
-          <div class="ep-info">
-            <h4>Los miedos antes de largar todo &mdash; <span class="badge-pronto">Próximamente</span></h4>
-            <span>39 min · muy pronto</span>
-          </div>
-          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </article>
-        <article class="pod-ep" data-num="04" data-duration="48 min">
-          <div class="num">04</div>
-          <div class="ep-info">
-            <h4>Cómo financiamos la vida en la ruta &mdash; <span class="badge-pronto">Próximamente</span></h4>
-            <span>48 min · muy pronto</span>
-          </div>
-          <span class="ep-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="pod-grid">
+<div class="pod-player reveal"><span class="eyebrow">Episodio disponible</span><h3>Resetear la vida y el choque cultural de migrar a Australia</h3><p>Una charla sobre empezar de nuevo, lejos de casa.</p><iframe title="Escuchar Resetear la vida en Spotify" src="https://open.spotify.com/embed/episode/2NSMjXxEZEpoRgpgSFnaIJ?theme=0" width="100%" height="232" style="border:0;border-radius:12px" allow="encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+<div class="route-sound reveal"><span class="eyebrow">La banda sonora</span><h3>Cielo de Sal</h3><p>Un tema para acompañar el camino. Dale play y quedate un rato.</p><img src="assets/logo-caravanoz.png" alt="CaravanOz" width="120" height="120" loading="lazy"><audio controls preload="none" aria-label="Escuchar Cielo de Sal"><source src="assets/Cielo_de_Sal.mp3" type="audio/mpeg"></audio></div>
+</div></div></section>
 
 <!-- ============================ GUÍAS ============================ -->
 <section class="section guides" id="guias">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Guías &amp; Artículos</span>
-      <h2>Aprendé de la experiencia directa</h2>
+      <h2>Para tu próximo paso</h2>
       <p>Guías prácticas paso a paso y crónicas de primera mano. La mezcla que nos hubiera gustado encontrar antes de arrancar.</p>
     </div>
 
@@ -330,102 +205,24 @@
   </div>
 </section>
 
-<!-- ============================ MENTORÍA ============================ -->
-<section class="section mentoria" id="mentoria">
-  <div class="container">
-    <div class="section-head reveal" style="text-align: center; max-width: 740px; margin: 0 auto 54px;">
-      <span class="eyebrow">Acompañamiento & Consejos</span>
-      <h2 style="color: var(--white);">Viajá con la tranquilidad de tener un copiloto en la ruta</h2>
-      <p style="color: rgba(255,255,255,0.9);">Te acompañamos antes de salir y durante tus kilómetros por Australia. Respuestas reales a dudas reales de trámites, compra de vehículos y trabajo en ruta.</p>
-    </div>
-
-    <div class="mentoria-grid">
-      <!-- PLAN 1 -->
-      <article class="m-plan-card reveal">
-        <div class="p-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 8 0v1a4 4 0 0 1-4 4h-5M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>
-        </div>
-        <h3>Café Caravanero</h3>
-        <p class="p-desc">Despejá la incertidumbre y arrancá sin estrés. Una sesión de preguntas y respuestas a medida para desenredar la burocracia australiana y entender la logística real del viaje.</p>
-        <ul class="p-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>El laberinto del Rego:</strong> Explicación de matriculación, transferencias e inspecciones por estado.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Estrategia de acampe:</strong> Dominá las apps para encontrar free camps reales y no pagar de más.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Presupuesto real:</strong> Costo real sobre ruedas hoy (combustible, comida, mantenimiento).
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Q&A Abierto:</strong> 60 minutos para despejar todas tus dudas, sin límite de preguntas.
-          </li>
-        </ul>
-        <button class="btn btn-ghost-light service-btn" data-service="cafe">Consultar Sesión</button>
-      </article>
-
-      <!-- PLAN 2 (FEATURED) -->
-      <article class="m-plan-card featured reveal">
-        <span class="pill">Copiloto de Compra</span>
-        <div class="p-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-        </div>
-        <h3>Tu Casa Rodante Ideal</h3>
-        <p class="p-desc">Evitá comprar a ciegas o caer en estafas. Analizamos tu presupuesto y estilo de viaje para sugerirte el vehículo exacto que necesitás antes de invertir tus ahorros.</p>
-        <ul class="p-features">
-          <li style="font-weight: 700; color: var(--sun);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Análisis de perfil:</strong> Evaluación previa de necesidades (trabajo remoto, off-grid, cantidad de viajeros).
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Selección de modelo:</strong> Pros/contras entre Campervan, Pop-top, 4x4 o Caravana tradicional.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Distribución inteligente:</strong> Qué layout buscar en el mercado según tu comodidad y ruta.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Filtro Anti-Lemons:</strong> Checklist descargable con puntos críticos a revisar antes de comprar.
-          </li>
-        </ul>
-        <button class="btn btn-primary service-btn" data-service="compra">Postularme al 1 a 1</button>
-      </article>
-
-      <!-- PLAN 3 -->
-      <article class="m-plan-card reveal">
-        <div class="p-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="15" r="2"/><circle cx="5" cy="12" r="2"/><path d="M11 11c-1.1 0-2 .9-2 2s1.4 4 3 4 3-3 3-4-1.1-2-4-2z"/></svg>
-        </div>
-        <h3>Ruta Pet-Friendly</h3>
-        <p class="p-desc">Viajar por Australia con animales tiene sus reglas. Te armamos la logística para que tu perro, gato o ave viaje seguro y sepas exactamente dónde son bienvenidos.</p>
-        <ul class="p-features">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Mapeo de zonas permitidas:</strong> Navegación de restricciones en National Parks y free camps amigables.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Adaptación del espacio:</strong> Ideas prácticas para organizar el interior según las necesidades del animal.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Prevención y clima:</strong> Pautas clave de fauna local, garrapatas, calor extremo y seguridad.
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <strong>Apps y recursos:</strong> Las mejores herramientas para filtrar campings y playas off-leash sin dar vueltas.
-          </li>
-        </ul>
-        <button class="btn btn-ghost-light service-btn" data-service="pets">Consultar Sesión</button>
-      </article>
-    </div>
+<!-- Asesorías: una sesión, dos temas para elegir. -->
+<span id="mentoria" aria-hidden="true"></span>
+<section class="section mentoria" id="asesorias" aria-labelledby="asesorias-title">
+ <div class="container">
+  <div class="section-head reveal asesoria-heading"><span class="eyebrow">ASESORÍAS PARA VIAJAR EN CARAVANA POR AUSTRALIA</span><h2 id="asesorias-title">Tu viaje en caravana empieza con un plan.</h2><p>Conversá con Pao y Leo sobre cómo organizar tu vida sobre ruedas en Australia. Revisamos tus dudas, tus prioridades y las opciones que podrías considerar, desde nuestra experiencia viajando desde 2023.</p></div>
+  <div class="asesoria-session">
+   <div><span class="session-label">UNA CHARLA PARA DAR TU PRÓXIMO PASO</span><h3>Café Caravanero</h3><p>60 minutos online para ordenar tu próximo paso en Australia. Para una persona o pareja que prepare el mismo viaje, con foco en organizar la ruta o evaluar qué caravana buscar.</p><ul class="session-includes"><li>Cuestionario previo para conocer tu plan.</li><li>Videollamada personalizada sobre un tema a elegir.</li><li>Resumen breve con próximos pasos y enlaces útiles.</li></ul></div>
+   <div class="session-action"><span class="launch-label">PRECIO DE LANZAMIENTO</span><div class="session-price">AUD <strong>59</strong><span>por sesión · 60 minutos</span></div><p class="regular-price">Precio habitual: AUD 79</p><p class="launch-limit">Para las primeras cinco reservas.<br>Consultá disponibilidad antes de reservar.</p><a class="btn btn-primary service-btn" href="https://www.instagram.com/paomedina.mivida_en_aus/" target="_blank" rel="noopener">Consultar una asesoría ↗</a><p>Por Instagram · Con Pao y Leo</p></div>
   </div>
+  <p class="topic-intro">¿En qué te gustaría enfocarte?</p>
+  <div class="mentoria-grid asesoria-topics">
+   <article class="m-plan-card reveal"><div class="p-icon" data-icon="map" aria-hidden="true"></div><span class="session-label">SI ESTÁS PREPARANDO LA SALIDA</span><h3>Organizá tu viaje</h3><p class="p-desc">Ordená tus ideas y prioridades para empezar a armar una ruta que tenga sentido para vos.</p><ul class="p-features"><li><strong>Ruta y tiempos:</strong> qué considerar al elegir destinos y distancias.</li><li><strong>Campings y recursos:</strong> cómo buscar lugares para parar y revisar sus condiciones.</li><li><strong>Presupuesto:</strong> qué gastos tener en cuenta para planificar.</li><li><strong>Vida cotidiana:</strong> organización, conectividad y viajar con mascotas, si es parte de tu plan.</li></ul></article>
+   <article class="m-plan-card reveal"><div class="p-icon" data-icon="caravan" aria-hidden="true"></div><span class="session-label">SI ESTÁS EVALUANDO OPCIONES</span><h3>Antes de elegir tu caravana</h3><p class="p-desc">Definí qué necesitás y qué preguntas hacer antes de avanzar con una compra.</p><ul class="p-features"><li><strong>Tu forma de viajar:</strong> cantidad de personas, trabajo y prioridades.</li><li><strong>Tipo de vehículo:</strong> diferencias prácticas entre opciones desde nuestra experiencia.</li><li><strong>Distribución y equipamiento:</strong> criterios para comparar comodidad y uso cotidiano.</li><li><strong>Próximas comprobaciones:</strong> preguntas para el vendedor y revisiones a consultar con un especialista.</li></ul></article>
+  </div>
+  <div class="asesoria-how"><h3>Así empezamos</h3><ol><li><strong>Contanos tu plan.</strong><span>Escribinos por Instagram y decinos qué querés resolver.</span></li><li><strong>Coordinamos la sesión.</strong><span>Confirmamos disponibilidad, tarifa aplicable, horario y condiciones para reprogramar. Después completás el cuestionario previo.</span></li><li><strong>Conversamos y te llevás un resumen.</strong><span>Tenemos la videollamada de 60 minutos y después te enviamos próximos pasos y enlaces útiles.</span></li></ol></div>
+  <p class="asesoria-scope">La sesión se centra en un tema. No incluye búsqueda exhaustiva de vehículos, itinerario completo ni seguimiento ilimitado por WhatsApp.</p>
+  <p class="asesoria-scope">Compartimos experiencia de viaje y vida en caravana. La revisión mecánica y técnica del vehículo corresponde a un especialista; esta sesión no sustituye una inspección de compra.</p>
+ </div>
 </section>
 
 <!-- ============================ DIARIO DE RUTA ============================ -->
@@ -448,26 +245,13 @@
 <!-- ============================ SOBRE NOSOTROS ============================ -->
 <section class="section about" id="nosotros">
   <div class="container">
-    <div class="about-media reveal">
-      <!-- Video de marca (reveal del logo). Podés reemplazar broll.mp4 por un clip de ustedes. -->
-      <div class="phone-frame">
-        <video autoplay muted loop playsinline poster="assets/poster.jpg">
-          <source src="assets/broll.mp4" type="video/mp4">
-        </video>
-        <span class="cap">CaravanOz · hecho en la ruta</span>
-      </div>
-      <div class="float-stat"><b>+15.000</b><span> km recorridos</span></div>
-    </div>
+    <figure class="about-media reveal"><img class="brand-story" src="assets/pao-leo-historia-usuario-actual.jpg" alt="Desde 2023: somos Pao y Leo, dos argentinos que eligieron una vida sobre ruedas en Australia. Postal con ambos al atardecer." width="800" height="1422" loading="lazy"><figcaption>Dos argentinos. Una caravana. Muchas historias.</figcaption></figure>
     <div class="about-text">
       <span class="eyebrow">Sobre Nosotros</span>
       <h2>Hola, somos Leo y Pao <span class="wave">👋</span></h2>
-      <p>Somos dos argentinos que en 2023 decidimos dejar la oficina, comprar una caravana y largarnos a recorrer Australia sin fecha de vuelta. Lo que empezó como una aventura se convirtió en nuestro estilo de vida.</p>
+      <p>Somos dos argentinos que en 2023 decidimos cambiar el departamento por una caravana y largarnos a recorrer Australia sin fecha de vuelta. Lo que empezó como una aventura se convirtió en nuestro estilo de vida.</p>
       <p>Hoy combinamos el trabajo remoto con la vida en la ruta, y compartimos cada parte del camino —lo lindo y lo difícil— para inspirar a otros hispanohablantes a animarse a vivir distinto. Esta comunidad es nuestro fogón virtual.</p>
-      <div class="about-stats">
-        <div class="st"><b>2023</b><span>En la ruta desde</span></div>
-        <div class="st"><b>81</b><span>Videos publicados</span></div>
-        <div class="st"><b>7</b><span>Estados recorridos</span></div>
-      </div>
+      <div class="our-story"><span class="eyebrow">EL COMIENZO</span><h3>La van fue la primera idea. La caravana abrió otro camino.</h3><p>En su entrevista con Diario TAG, Pao contó que eligieron una caravana cuando la van resultó demasiado cara. Después sumaron mejoras de agua, energía y conexión para trabajar durante el viaje.</p><a href="articulos/por-que-dejamos-todo-caravana-australia.html">Conocé la historia del comienzo ↗</a></div><div class="about-stats"><div class="st"><b>2023</b><span>El comienzo de esta aventura</span></div></div>
     </div>
   </div>
 </section>
@@ -478,7 +262,7 @@
     <div class="section-head reveal" style="text-align: center; max-width: 740px; margin: 0 auto 40px;">
       <span class="eyebrow">El Mapa</span>
       <h2>Nuestro recorrido completo por Australia</h2>
-      <p>Miles de kilómetros, cientos de historias y 7 estados recorridos. Así fue nuestro camino desde el primer día que salimos a la ruta.</p>
+      <p>Un mapa para acompañar las historias que compartimos. Cada tramo tiene algo para contar.</p>
     </div>
     <div class="route-map reveal" style="text-align: center;">
       <img src="assets/mapa.jpg" alt="Mapa del recorrido completo de CaravanOz por Australia" style="width: 100%; max-width: 700px; border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.15); display: inline-block; object-fit: cover;" />
@@ -486,18 +270,19 @@
   </div>
 </section>
 
+</main>
 <!-- ============================ FOOTER ============================ -->
 <footer class="footer" id="newsletter">
   <div class="container">
     <div class="footer-top">
       <div>
         <a href="#inicio" class="brand">
-          <span class="mark"><img src="assets/logo.svg" alt="Logo CaravanOz" width="48" height="48" /></span>
+          <span class="mark"><img src="assets/logo-caravanoz.png" alt="Logo CaravanOz" width="48" height="48" /></span>
           Caravan<b>Oz</b>
         </a>
         <p class="f-about">Argentinos viajando en caravana por Australia desde 2023. Inspiración, guías y la realidad de la vida nómada para la comunidad hispanohablante.</p>
         <div class="socials">
-          <a href="https://instagram.com/paolamedina.caravanoz" aria-label="Instagram" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/paomedina.mivida_en_aus/" aria-label="Instagram" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
           </a>
           <a href="https://www.youtube.com/@CaravanOz" aria-label="YouTube" target="_blank" rel="noopener">
@@ -510,23 +295,15 @@
         <h4>Explorar</h4>
         <nav class="fnav">
           <a href="#inicio">Inicio</a>
-          <a href="#guias">Guías de Viaje</a>
+          <a href="guias/primeros-pasos-australia.html">Guía gratis de llegada</a>
           <a href="#videos">YouTube</a>
           <a href="#podcast">Podcast</a>
-          <a href="#mentoria">Mentoría</a>
+          <a href="#asesorias">Asesorías</a>
           <a href="#nosotros">Sobre Nosotros</a>
         </nav>
       </div>
 
-      <div class="newsletter">
-        <h4>Sumate al fogón virtual</h4>
-        <p>Sumate para recibir nuestro <b>Mapa de Free Camps de regalo 🎁</b> y tips semanales de la ruta por Australia. Sin spam.</p>
-        <form class="nl-form" id="nlForm">
-          <input type="email" id="nlEmail" placeholder="tucorreo@email.com" aria-label="Tu email" required />
-          <button type="submit">Sumarme</button>
-        </form>
-        <p class="nl-msg" id="nlMsg" role="status"></p>
-      </div>
+      <div class="newsletter"><h4>Seguimos en contacto</h4><p>Las postales del día a día están en Instagram. Pasá a saludarnos o contanos qué viaje estás imaginando.</p><a href="https://www.instagram.com/paomedina.mivida_en_aus/" target="_blank" rel="noopener" class="btn btn-primary">Encontranos en Instagram ↗</a></div>
     </div>
 
     <div class="footer-bottom">
@@ -535,45 +312,6 @@
     </div>
   </div>
 </footer>
-
-<!-- Modal de Consulta de Servicios (Interactive Popup Form) -->
-<div id="serviceModal" class="modal-overlay" aria-hidden="true" role="dialog">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose" aria-label="Cerrar modal">&times;</button>
-    <div class="modal-header">
-      <h3>Enviar Consulta</h3>
-      <p>Dejanos tus datos y nos pondremos en contacto por WhatsApp o email en menos de 24 horas para ayudarte.</p>
-    </div>
-    <form id="serviceForm" class="modal-form">
-      <div class="form-group">
-        <label for="mName">Nombre completo</label>
-        <input type="text" id="mName" placeholder="Ej. Sofía Fernández" required autocomplete="name">
-      </div>
-      <div class="form-group">
-        <label for="mEmail">Correo electrónico</label>
-        <input type="email" id="mEmail" placeholder="Ej. sofia@ejemplo.com" required autocomplete="email">
-      </div>
-      <div class="form-group">
-        <label for="mPhone">WhatsApp (con código de país)</label>
-        <input type="tel" id="mPhone" placeholder="Ej. +54 9 11 1234 5678" required>
-      </div>
-      <div class="form-group">
-        <label for="mService">Servicio de interés</label>
-        <select id="mService" required>
-          <option value="cafe">Café Caravanero — Logística y Dudas Generales</option>
-          <option value="compra">Tu Casa Rodante Ideal — Asesoría de Compra</option>
-          <option value="pets">Ruta Pet-Friendly — Viajar con Mascotas</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="mMessage">Tu consulta (contanos sobre tu viaje o caravana)</label>
-        <textarea id="mMessage" placeholder="¿Cuándo viajas? ¿Qué tipo de caravana estás buscando?" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary w-full">Enviar consulta ✦</button>
-      <p id="modalMsg" class="form-msg" role="status"></p>
-    </form>
-  </div>
-</div>
 
 <script src="js/main.js" defer></script>
 </body>

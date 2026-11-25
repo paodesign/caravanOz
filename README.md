@@ -1,5 +1,9 @@
 # CaravanOz — Sitio web
 
+> Propuesta local 25/11/2026: portada renovada en rama `melhoria/conteudo-mentorias-2026-11-25`, sin publicar. La home usa `css/home.css`, consultas por Instagram, embed de Spotify y audio HTML nativo. Se retiraron los formularios simulados y la newsletter hasta contar con proveedor. Las instrucciones inferiores describen la versión histórica. Vista previa actual: `node -e "require('./tools/preview.cjs')"` y http://127.0.0.1:8766. Detalle y pendientes en el README del expediente (dos niveles arriba).
+
+Segunda revisión: guía gratuita en `guias/primeros-pasos-australia.html`, estilos propios en `css/arrival-guide.css` y checklist local en `js/arrival-guide.js`. Consultable sin registro, con fuentes oficiales y edición fechada. `data.json` y fallback en `main.js` deben mantenerse sincronizados al editar las tarjetas. Diseño actualizado según las piezas de marca de Paola y contraste del podcast corregido. Pendiente aprobación/publicación.
+
 Landing page + hub de contenido para **CaravanOz**, la comunidad de hispanohablantes que viven y viajan en caravana por Australia. Sitio estático (HTML, CSS y JavaScript puro), sin frameworks ni paso de build: listo para publicar.
 
 ## Estructura del proyecto

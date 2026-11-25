@@ -3,46 +3,38 @@
     {
       "id": "vid-1",
       "tag": "Reflexiones",
-      "title": "Un año entero recorriendo Queensland en caravana",
-      "duration": "19:50",
+      "title": "Un año nómada: Queensland en caravana y drone",
       "gradientClass": "grad-1",
-      "image": "assets/queensland_beach.jpg",
-      "views": "4,2 mil vistas",
-      "date": "Hace 2 semanas",
-      "url": "https://www.youtube.com/@CaravanOz"
+      "image": "https://i.ytimg.com/vi/6cUM57P5Yg8/hq720.jpg",
+      "url": "https://www.youtube.com/watch?v=6cUM57P5Yg8",
+      "verifiedAt": "2026-11-25"
     },
     {
       "id": "vid-2",
       "tag": "Guía de destino",
-      "title": "Qué hacer en Cairns + mejoras a la caravana y sorpresas épicas",
-      "duration": "42:43",
+      "title": "¿Qué hacer en Cairns? Mejoras de caravana y sorpresas",
       "gradientClass": "grad-2",
-      "image": "assets/cairns_lagoon.jpg",
-      "views": "6,8 mil vistas",
-      "date": "Hace 1 mes",
-      "url": "https://www.youtube.com/@CaravanOz"
+      "image": "https://i.ytimg.com/vi/1MDkd85dzic/hq720.jpg",
+      "url": "https://www.youtube.com/watch?v=1MDkd85dzic",
+      "verifiedAt": "2026-11-25"
     },
     {
       "id": "vid-3",
       "tag": "La realidad",
-      "title": "La verdad detrás del romanticismo del camping",
-      "duration": "20:23",
+      "title": "Vida en caravana: la verdad detrás del romanticismo del camping",
       "gradientClass": "grad-3",
-      "image": "assets/outback_sunset.jpg",
-      "views": "9,1 mil vistas",
-      "date": "Hace 1 mes",
-      "url": "https://www.youtube.com/@CaravanOz"
+      "image": "https://i.ytimg.com/vi/VmrwHxQwXjI/hq720.jpg",
+      "url": "https://www.youtube.com/watch?v=VmrwHxQwXjI",
+      "verifiedAt": "2026-11-25"
     },
     {
       "id": "vid-4",
       "tag": "Aventura",
-      "title": "Cairns y Kuranda: una aventura épica entre la selva",
-      "duration": "7:55",
+      "title": "Cairns a Kuranda: Skyrail y selva",
       "gradientClass": "grad-4",
-      "image": "assets/kuranda_rainforest.jpg",
-      "views": "5,3 mil vistas",
-      "date": "Hace 2 meses",
-      "url": "https://www.youtube.com/@CaravanOz"
+      "image": "https://i.ytimg.com/vi/C4oDu7F4fW4/hq720.jpg",
+      "url": "https://www.youtube.com/watch?v=C4oDu7F4fW4",
+      "verifiedAt": "2026-11-25"
     }
   ],
   "podcastEpisodes": [
@@ -85,25 +77,36 @@
   ],
   "guides": [
     {
+      "id": "guide-arrival",
+      "type": "guide",
+      "readTime": null,
+      "iconType": "o",
+      "iconSvg": "",
+      "tag": "Gratis · Primeros pasos",
+      "title": "Recién llegás a Australia: ¿y ahora?",
+      "description": "Organizá tu llegada: teléfono, banco, TFN, alojamiento, salud, trabajo y transporte. Con checklist y fuentes oficiales.",
+      "url": "guias/primeros-pasos-australia.html"
+    },
+    {
       "id": "guide-budget",
       "type": "guide",
       "readTime": null,
       "iconType": "t",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v10M9.5 9.5a2.5 2 0 0 1 5 0c0 1.5-2.5 1.5-2.5 2.5s2.5 1 2.5 2.5a2.5 2 0 0 1-5 0\"/></svg>",
       "tag": "Presupuesto",
-      "title": "Costos de vida en la ruta",
-      "description": "Cuánto cuesta realmente vivir viajando: combustible, comida, campings y los gastos que nadie te cuenta.",
+      "title": "Cómo armar tu presupuesto para viajar en caravana",
+      "description": "Calculá los gastos de llegada, la vida cotidiana y los imprevistos con cotizaciones para tu propio viaje.",
       "url": "guias/costos-vida-ruta-australia.html"
     },
     {
       "id": "article-costo-real",
       "type": "article",
-      "readTime": "8 min",
+      "readTime": null,
       "iconType": "t",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"/></svg>",
-      "tag": "Crónica · Presupuesto",
-      "title": "¿Cuánto cuesta vivir en caravana? Los números reales",
-      "description": "Sin suavizar nada: combustible, alojamiento, comida e imprevistos en AUD. Los datos que buscábamos antes de arrancar y nadie publicaba.",
+      "tag": "Presupuesto",
+      "title": "Antes de mirar un presupuesto ajeno",
+      "description": "Las preguntas que conviene hacer para comparar costos de viaje y construir tu propia estimación.",
       "url": "articulos/cuanto-cuesta-vivir-caravana-australia.html"
     },
     {
@@ -112,20 +115,20 @@
       "readTime": null,
       "iconType": "o",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\"/><path d=\"M8.5 16.5a3.5 3.5 0 0 1 7 0\"/></svg>",
-      "tag": "Visas",
-      "title": "De visa de estudio a Sponsorship",
-      "description": "Leo, con 38 años y sin título universitario, consiguió un sponsor como ingeniero de software en 3 meses. Cómo pasamos de una student visa a una employer-sponsored sin que pareciera posible.",
+      "tag": "Primeros pasos",
+      "title": "Visas y trabajo: dónde confirmar tu situación",
+      "description": "Fuentes oficiales para revisar tu visa, permiso de trabajo y opciones de patrocinio en Australia.",
       "url": "guias/work-and-holiday-visa-australia.html"
     },
     {
       "id": "article-por-que",
       "type": "article",
-      "readTime": "8 min",
+      "readTime": null,
       "iconType": "s",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0\"/><path d=\"M12 8v4l3 3\"/></svg>",
-      "tag": "Crónica · Decisión",
-      "title": "Por qué dejamos todo para vivir en caravana",
-      "description": "Las listas, los miedos, la búsqueda de la caravana y el 15 de junio de 2023: el día que salimos al norte sin itinerario ni fecha de regreso.",
+      "tag": "Nuestra historia",
+      "title": "De un departamento a una vida sobre ruedas",
+      "description": "Una historia de adaptación, trabajo y decisiones compartidas entre Pao y Leo.",
       "url": "articulos/por-que-dejamos-todo-caravana-australia.html"
     },
     {
@@ -134,20 +137,20 @@
       "readTime": null,
       "iconType": "s",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 20l9-15 9 15z\"/><path d=\"M12 5v15M3 20h18\"/></svg>",
-      "tag": "Camping",
-      "title": "Mejores campings gratuitos",
-      "description": "Nuestro mapa de free camps imperdibles: dónde parar gratis, con qué servicios y cómo encontrarlos.",
+      "tag": "Campings",
+      "title": "Cómo buscar campings gratuitos en Australia",
+      "description": "Qué comprobar antes de elegir un lugar para pasar la noche: permiso, servicios, restricciones y condiciones del día.",
       "url": "guias/mejores-campings-gratuitos-australia.html"
     },
     {
       "id": "article-nadie-cuenta",
       "type": "article",
-      "readTime": "9 min",
+      "readTime": null,
       "iconType": "o",
       "iconSvg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/></svg>",
-      "tag": "Crónica · Reflexión",
-      "title": "Lo que nadie te cuenta del van life",
-      "description": "Instagram miente. Después de casi dos años en la ruta, esto es lo que nos hubiera gustado saber: lo que no se fotografía bien pero es igual de real.",
+      "tag": "Vida en ruta",
+      "title": "La vida en caravana también pasa entre las postales",
+      "description": "Conexión, tareas cotidianas y decisiones que forman parte de un viaje largo.",
       "url": "articulos/lo-que-nadie-cuenta-van-life-australia.html"
     }
   ],

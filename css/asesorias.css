@@ -1,0 +1,40 @@
+#mentoria{display:block;scroll-margin-top:84px}
+.our-story{padding:24px;border-left:3px solid #b94c29;border-radius:0 10px 10px 0;background:#eaf0eb;margin-top:26px}
+.home-page .our-story h3{font-size:24px;line-height:1.2;font-weight:500;margin:12px 0}
+.home-page .our-story p{font-size:14px;margin-bottom:16px}
+.our-story>a{font-size:12px;font-weight:600;color:#a64122}
+.home-page .asesoria-heading{text-align:center;max-width:780px;margin:0 auto 40px}
+.home-page .asesoria-heading h2{color:white}
+.home-page .asesoria-heading p{color:#d3e1e3;margin-left:auto;margin-right:auto;max-width:690px}
+.asesoria-session{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:32px;border:1px solid #ffb44e70;border-radius:14px;background:#ffffff08}
+.session-label{display:block;font-size:9px;letter-spacing:.13em;color:#f4c782;font-weight:600;line-height:1.6}
+.asesoria-session h3{font-size:36px;font-weight:500;color:white;margin:10px 0 14px;letter-spacing:-.7px}
+.asesoria-session p{font-size:14px;color:#d3e1e3;max-width:650px}
+.session-action{text-align:center}.session-action p{font-size:11px;margin:12px 0 0}
+.session-action{min-width:265px}
+.launch-label{display:inline-block;background:#ffb44e18;color:#ffce8a;border:1px solid #ffb44e44;border-radius:5px;padding:5px 9px;font-size:9px;letter-spacing:.1em;margin-bottom:12px}
+.session-price{color:#ffce8a;font-size:18px;line-height:1.1}
+.session-price strong{font-family:Outfit,sans-serif;font-size:64px;font-weight:500;letter-spacing:-2px;vertical-align:baseline}
+.session-price>span{display:block;font-size:12px;color:#d3e1e3;margin-top:8px}
+.session-action .regular-price{color:#c6d8d8;font-size:12px}
+.session-action .launch-limit{color:#d3e1e3;line-height:1.6;margin:14px 0 20px}
+.session-includes{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:9px}
+.session-includes li{font-size:13px;color:#d3e1e3;position:relative;padding-left:18px;line-height:1.6}
+.session-includes li:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#ffb44e}
+@media(max-width:800px){.session-action{min-width:0;padding-top:20px;border-top:1px solid #ffffff24}.session-price strong{font-size:56px}}
+.topic-intro{font-size:14px;color:#d3e1e3;margin:34px 0 18px}
+.home-page .asesoria-topics{grid-template-columns:1fr 1fr;gap:24px;margin:0}
+.home-page .asesoria-topics .m-plan-card{padding:30px}
+.home-page .asesoria-topics .session-label{margin-bottom:10px;color:#afc8c7}
+.home-page .asesoria-topics .p-icon{margin-bottom:20px}
+.home-page .asesoria-topics .p-features{margin-bottom:0}
+.home-page .asesoria-topics ul.p-features li{padding-left:0;font-size:13px}
+.home-page .asesoria-topics ul.p-features li:before{content:none}
+.asesoria-how{padding:32px 0 0;margin-top:8px}
+.asesoria-how h3{font-size:24px;font-weight:500;color:white;margin-bottom:22px}
+.asesoria-how ol{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none;counter-reset:steps;padding:0;margin:0}
+.asesoria-how li{counter-increment:steps;padding-left:38px;position:relative;color:#d3e1e3;font-size:12px;line-height:1.7}
+.asesoria-how li:before{content:counter(steps);position:absolute;left:0;top:0;width:26px;height:26px;border:1px solid #71928c;border-radius:50%;display:grid;place-items:center;color:#ffce8a;font-size:11px}
+.asesoria-how strong{display:block;font-size:14px;color:white;margin-bottom:5px}
+.asesoria-scope{color:#b8ccce;font-size:11px;line-height:1.7;border-top:1px solid #ffffff24;margin-top:30px;padding-top:20px;max-width:950px}
+@media(max-width:800px){.asesoria-session{grid-template-columns:1fr;padding:26px;gap:22px}.session-action{text-align:left}.home-page .asesoria-topics{grid-template-columns:1fr}.asesoria-how ol{grid-template-columns:1fr;gap:22px}.asesoria-session h3{font-size:30px}.home-page .asesoria-topics .m-plan-card{padding:26px}}
